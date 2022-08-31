@@ -68,7 +68,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"/>
             <Button
-                android:id="@+id/DeleteReviewHelp"
+                android:id="@+id/btnRequestHelp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="360dp"

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/premium_dark"
+    tools:context="za.ac.cput.pengu_tv.UserRegistration">
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:drawableStart="@drawable/ic_person"
+        android:drawableTint="@color/white"
+        android:ems="10"
+        android:hint="   UserName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#696969"
+        android:textSize="20dp"
+
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35" />
+
+    <EditText
+        android:id="@+id/edtFirstname"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:drawableStart="@drawable/ic_person"
+        android:drawableTint="@color/white"
+        android:ems="10"
+        android:hint="   Firstnames"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#696969"
+        android:textSize="20dp"
+
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.628" />
+
+    <EditText
+        android:id="@+id/edtLastName"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:drawableStart="@drawable/ic_person"
+        android:drawableTint="@color/white"
+        android:ems="10"
+        android:hint="   Lastnames"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#696969"
+        android:textSize="20dp"
+
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.718" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:drawableStart="@drawable/ic_lock"
+        android:drawableTint="@color/white"
+        android:ems="10"
+        android:hint="   Password"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#696969"
+        android:textSize="20dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+
+    <Button
+        android:id="@+id/RegButton"
+        android:layout_width="140dp"
+        android:layout_height="41dp"
+
+
+        android:background="@drawable/outline_button"
+        android:text="Register"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.846">
+
+    </Button>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="412dp"
+        android:layout_height="48dp"
+        android:text="User Registration"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.188" />
+
+    <ImageView
+        android:id="@+id/pngAppLogo"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.152" />
+
+    <Button
+        android:id="@+id/UserLogbtn"
+        android:layout_width="114dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="680dp"
+
+        android:background="@drawable/outline_button"
+        android:text="Login"
+
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnReturn"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/pngAppLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextEmailAddress"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawableTint="@color/white"
+        android:hint="   Email Address"
+        android:inputType="textEmailAddress"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#696969"
+
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.539" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
