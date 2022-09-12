@@ -9,10 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PenguTV" >
         <activity
-            android:name=".AdminLogin"
-            android:exported="false" />
-        <activity
-            android:name=".UserRegistration"
+
             android:exported="true" />
         <activity
             android:name=".UserLogin"

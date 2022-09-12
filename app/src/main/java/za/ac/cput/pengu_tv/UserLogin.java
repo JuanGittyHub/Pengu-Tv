@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.application.R;
@@ -35,6 +36,8 @@ public class UserLogin extends AppCompatActivity {
         Button logBtn = findViewById(R.id.btnLogin);
         Button goRegBtn = findViewById(R.id.RegButton);
         Button goAdminBtn = findViewById(R.id.AdminB);
+        ImageView myImageView7= findViewById(R.id.imageView2);
+        myImageView7.setImageResource(R.drawable.pengu_tv);
         myDb = new DBHelper(UserLogin.this);
 
         edtUsername = (EditText) findViewById(R.id.username);
