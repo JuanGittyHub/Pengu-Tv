@@ -10,17 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PenguTV">
         <activity
-
-            android:exported="true" />
+            android:name=".HomePage"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
+        <activity
+            android:name=".AdministratorUsers"
+            android:exported="true" />
+        <activity
+            android:name=".AdministratorReviews"
+            android:exported="true" />
+        <activity
+            android:name=".AdministratorRequests"
+            android:exported="true" />
         <activity
             android:name=".AdminLogin"
             android:exported="true">
