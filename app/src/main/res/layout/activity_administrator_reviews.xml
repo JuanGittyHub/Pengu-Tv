@@ -67,8 +67,9 @@
                 android:text="___________________________________________"
                 android:textAlignment="center"
                 android:textColor="@color/white"/>
+
             <Button
-                android:id="@+id/DeleteReviewHelp"
+                android:id="@+id/btnAddReviewHelp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="360dp"
@@ -76,6 +77,170 @@
                 android:drawableStart="@drawable/ic_help"
 
                 />
+            <Spinner
+                android:id="@+id/spinnerAddReviewAnime"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_baseline_live_tv_24"
+                android:layout_width="200dp"
+
+                android:textColor="@color/white"
+                android:textColorHint="#696969"
+                android:hint="   Genre"
+                android:layout_marginHorizontal="140dp"/>
+
+            <EditText
+                android:id="@+id/edtAddReviewUserName"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_person"
+                android:drawableTint="@color/white"
+                android:layout_width="200dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textColorHint="#696969"
+                android:hint="   UserName"
+                android:layout_marginHorizontal="140dp"/>
+            <EditText
+                android:id="@+id/edtAddReviewAnimeDescription"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:hint=" Review  Description:"
+                android:inputType="textMultiLine"
+                android:lines="6"
+                android:background="@drawable/text_area_outline"
+                android:textColorHint="#696969"
+                android:gravity="top"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="140dp"
+
+                />
+            <EditText
+                android:id="@+id/edtAddReviewAnimeRating"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_baseline_star_rate_24"
+                android:layout_width="200dp"
+                android:text=""
+                android:inputType="numberDecimal"
+                android:textColor="@color/white"
+                android:textColorHint="#696969"
+                android:hint="   Personal Rating"
+                android:layout_marginHorizontal="140dp"/>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+
+                />
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAddReview"
+                android:background="@drawable/outline_button"
+                android:text="Add Review"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="55dp"
+                />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="___________________________________________"
+                android:textAlignment="center"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnUpdateReviewHelp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="360dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableStart="@drawable/ic_help"
+
+                />
+            <EditText
+                android:id="@+id/edtUpdateReviewId"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_baseline_123_24"
+                android:layout_width="200dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textColorHint="#696969"
+                android:hint="   Review Id"
+                android:layout_marginHorizontal="140dp"/>
+            <EditText
+                android:id="@+id/edtUpdateReviewUsername"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_person"
+                android:layout_width="200dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:drawableTint="@color/white"
+                android:textColorHint="#696969"
+                android:hint="   Username"
+                android:layout_marginHorizontal="140dp"/>
+            <EditText
+            android:id="@+id/edtUpdateReviewAnimeDescription"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:hint=" Review  Description:"
+            android:inputType="textMultiLine"
+            android:lines="6"
+            android:background="@drawable/text_area_outline"
+            android:textColorHint="#696969"
+            android:gravity="top"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="140dp"
+
+            />
+            <EditText
+                android:id="@+id/edtUpdateReviewRating"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_baseline_star_rate_24"
+                android:layout_width="200dp"
+                android:text=""
+                android:inputType="numberDecimal"
+                android:textColor="@color/white"
+                android:drawableTint="@color/white"
+                android:textColorHint="#696969"
+                android:hint="   Personal Rating"
+                android:layout_marginHorizontal="140dp"/>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                />
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnUpdateReview"
+                android:background="@drawable/outline_button"
+                android:text="Update Review"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="55dp"
+                />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="___________________________________________"
+                android:textAlignment="center"
+                android:textColor="@color/white"/>
+            <Button
+                android:id="@+id/btnDeleteReviewHelp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="360dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableStart="@drawable/ic_help"
+
+                />
+
 
 
             <EditText
@@ -95,6 +260,7 @@
                 android:text=""
                 android:hint="   UserName"
                 android:textColorHint="#696969"
+                android:id="@+id/edtDeleteReviewUserame"
                 android:textColor="@color/white"
                 android:layout_marginHorizontal="140dp"
                 android:drawableStart="@drawable/ic_person"
@@ -109,6 +275,7 @@
                 android:inputType="numberDecimal"
                 android:textColorHint="#696969"
                 android:textColor="@color/white"
+                android:id="@+id/edtDeletePersonalRating"
                 android:layout_marginHorizontal="140dp"
                 android:drawableStart="@drawable/ic_baseline_star_rate_24"
                 android:drawableTint="@color/white"/>
@@ -116,7 +283,8 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:hint="   Rating Number"
+                android:hint="   Review Id"
+                android:id="@+id/edtDeleteReviewId"
                 android:inputType="number"
                 android:textColorHint="#696969"
                 android:textColor="@color/white"
@@ -136,6 +304,7 @@
                 android:textColor="@color/white"
                 android:layout_marginHorizontal="55dp"
                 />
+
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"/>
@@ -147,7 +316,7 @@
                 android:textColor="@color/white"
                 />
             <Button
-                android:id="@+id/SearchAnimeHelp"
+                android:id="@+id/btnSearchReviewHelp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="360dp"
@@ -155,34 +324,14 @@
                 android:drawableStart="@drawable/ic_help"
                 android:textColor="@color/white"
                 />
-            <EditText
-                android:id="@+id/edtAnimeName"
-                android:layout_height="match_parent"
-                android:drawableStart="@drawable/ic_baseline_live_tv_24"
-                android:layout_width="200dp"
-                android:text=""
-                android:textColor="@color/white"
-                android:textColorHint="#696969"
-                android:hint="   Anime Name"
-                android:layout_marginHorizontal="140dp"/>
-
-            <EditText
-                android:id="@+id/edtUsername"
-                android:layout_height="match_parent"
-                android:drawableStart="@drawable/ic_person"
-                android:layout_width="200dp"
-                android:text=""
-                android:textColor="@color/white"
-                android:textColorHint="#696969"
-                android:drawableTint="@color/white"
-                android:hint="   Username"
-                android:layout_marginHorizontal="140dp"/>
 
             <EditText
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:hint="   Review Number"
+                android:id="@+id/edtSearchFindReviewId"
+                android:hint="   Review Id"
+                android:inputType="numberDecimal"
                 android:textColorHint="#696969"
                 android:textColor="@color/white"
                 android:layout_marginHorizontal="140dp"
@@ -192,7 +341,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"/>
             <Button
-                android:id="@+id/btnSearchReview"
+                android:onClick="search_Review"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/outline_button"
@@ -204,6 +353,51 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"/>
             <TextView
+                android:id="@+id/txtReviewId"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                android:textSize="16dp"
+                android:text="Review Id:"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="55dp"/>
+            <TextView
+                android:id="@+id/txtReviewUserId"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                android:textSize="16dp"
+                android:text="User Id:"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="55dp"/>
+            <TextView
+            android:id="@+id/txtReviewAnimeId"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+
+            android:textSize="16dp"
+            android:text="Anime Id:"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="55dp"/>
+            <TextView
+                android:id="@+id/txtReviewDescription"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                android:textSize="16dp"
+                android:text="Description:"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="55dp"/>
+            <TextView
+                android:id="@+id/txtReviewRating"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+
+                android:textSize="16dp"
+                android:text="Personal Rating:"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="55dp"/>
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="___________________________________________"
@@ -212,16 +406,26 @@
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"/>
+            <Button
+                android:id="@+id/btnViewAllReviewsHelp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="360dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableStart="@drawable/ic_help"
+                android:textColor="@color/white"
+                />
 
             <EditText
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:hint="   Anime Name"
+                android:id="@+id/edtViewReview"
+                android:hint="   Aniem Id"
                 android:textColorHint="#696969"
                 android:textColor="@color/white"
                 android:layout_marginHorizontal="140dp"
-                android:drawableStart="@drawable/ic_baseline_live_tv_24"
+                android:drawableStart="@drawable/ic_baseline_123_24"
                 android:drawableTint="@color/white"/>
             <Space
                 android:layout_width="wrap_content"
@@ -229,7 +433,7 @@
             <Button
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/View"
+                android:id="@+id/btnViewReviews"
                 android:background="@drawable/outline_button"
                 android:text="View Reviews"
                 android:layout_marginHorizontal="55dp"

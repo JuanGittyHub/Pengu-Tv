@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/premium_dark"
-    tools:context=".AdminLogin">
+    tools:context="za.ac.cput.pengu_tv.UserLogin">
 
     <EditText
-        android:id="@+id/edtUsername"
+        android:id="@+id/username"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:drawableStart="@drawable/ic_person"
@@ -27,14 +27,13 @@
         app:layout_constraintVertical_bias="0.35" />
 
     <EditText
-        android:id="@+id/edtPassword"
+        android:id="@+id/tpPassword"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:drawableStart="@drawable/ic_lock"
         android:drawableTint="@color/white"
         android:ems="10"
         android:hint="   Password"
-        android:inputType="textPassword"
         android:textColor="#FFFFFF"
         android:textColorHint="#696969"
         android:textSize="20dp"
@@ -51,9 +50,9 @@
         android:layout_height="wrap_content"
 
 
-        android:textColor="@color/white"
         android:background="@drawable/outline_button"
         android:text="Login"
+        android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.823"
@@ -65,39 +64,89 @@
     </Button>
 
     <Button
-        android:id="@+id/btnHome"
+        android:id="@+id/btnReturn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:textSize="20dp"
-        android:text="Home"
-        android:textColor="@color/white"
         android:background="@drawable/outline_button"
+        android:text="Back"
+        android:textColor="@color/white"
+        android:textSize="20dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7">
-    </Button>
+        app:layout_constraintVertical_bias="0.7"></Button>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:text="Administrator Login"
+        android:id="@+id/textView"
+        android:layout_width="245dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="60dp"
+        android:text="User Login"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.205" />
 
     <ImageView
         android:id="@+id/pngAppLogo"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.151" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="341dp"
+        android:layout_height="31dp"
+        android:layout_marginEnd="16dp"
+        android:text="Don't Have an Account?"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.821" />
+
+    <Button
+        android:id="@+id/RegButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/outline_button"
+
+        android:text="Register"
+        android:textColor="@color/white"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnReturn"
+        app:layout_constraintVertical_bias="0.681"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+
         android:layout_width="400dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
@@ -108,5 +157,23 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05"/>
+
+      
+
+    <Button
+        android:id="@+id/AdminB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/outline_button"
+        android:text="Admin"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

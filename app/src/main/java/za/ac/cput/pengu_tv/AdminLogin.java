@@ -8,10 +8,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.android.application.R;
 
 public class AdminLogin extends AppCompatActivity {
-
+private EditText edtUsername,edtpassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +27,32 @@ public class AdminLogin extends AppCompatActivity {
         ImageView myImageView5= findViewById(R.id.pngAppLogo);
         myImageView5.setImageResource(R.drawable.pengu_tv);
 
+        edtUsername= (EditText) findViewById(R.id.edtUsername);
+        edtpassword= (EditText) findViewById(R.id.edtPassword);
+
+
         Button btnLogin = findViewById(R.id.btnLogin);
+        Button goRegBtn = findViewById(R.id.btnHome);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(AdminLogin.this, AdministratorUsers.class);
+                if (edtUsername.getText().toString().equals("admin") && edtpassword.getText().toString().equals("admin")){
+                    Intent intent= new Intent(AdminLogin.this, AdministratorUsers.class);
+                    Toast.makeText(AdminLogin.this, "Welcome back!", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(AdminLogin.this, "The username or password is incorrect!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        goRegBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(AdminLogin.this, UserRegistration.class);
                 startActivity(intent);
             }
         });
