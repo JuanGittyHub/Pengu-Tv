@@ -178,10 +178,10 @@ public class AdministratorUsers extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(edtAddName.getText().toString().isEmpty()==true ||
-                edtAddLastName.getText().toString().isEmpty()==true ||
-                edtAddUsername.getText().toString().isEmpty()==true ||
+                        edtAddLastName.getText().toString().isEmpty()==true ||
+                        edtAddUsername.getText().toString().isEmpty()==true ||
                         (edtAddEmail.getText().toString().isEmpty()==true)||
-                edtAddPassword.getText().toString().isEmpty()==true){
+                        edtAddPassword.getText().toString().isEmpty()==true){
 
                     Toast.makeText(AdministratorUsers.this, "There are empty or incorrect fields!", Toast.LENGTH_SHORT).show();
                 }
@@ -189,7 +189,7 @@ public class AdministratorUsers extends AppCompatActivity {
                     insertUser();
 
 
-                  }
+                }
                 else if (!edtAddEmail.getText().toString().contains("@gmail.com")){
                     Toast.makeText(AdministratorUsers.this, "Invalid Email!", Toast.LENGTH_SHORT).show();
                     edtAddEmail.getText().clear();
@@ -277,18 +277,18 @@ public class AdministratorUsers extends AppCompatActivity {
         emailCheck=myDb.checkUserEmail(checkUserEmail,sqLiteDatabase);
         usernameCheck= myDb.checkUserUsername(checkUserUsername,sqLiteDatabase);
         if(emailCheck.moveToFirst() && usernameCheck.moveToFirst()){
-        Boolean isUpdated= myDb.updateUser(edtUpdateName.getText().toString(),
-                edtUpdateLastname.getText().toString(),
-                edtUpdateUsername.getText().toString(),
-                edtUpdatePassword.getText().toString(),
-                edtUpdateEmail.getText().toString());
-        if (isUpdated.equals(true)){
-            Toast.makeText(this, "Account updated!", Toast.LENGTH_SHORT).show();
-            edtUpdateName.getText().clear();
-            edtUpdateLastname.getText().clear();
-            edtUpdateUsername.getText().clear();
-            edtUpdateEmail.getText().clear();
-            edtUpdatePassword.getText().clear();}
+            Boolean isUpdated= myDb.updateUser(edtUpdateName.getText().toString(),
+                    edtUpdateLastname.getText().toString(),
+                    edtUpdateUsername.getText().toString(),
+                    edtUpdatePassword.getText().toString(),
+                    edtUpdateEmail.getText().toString());
+            if (isUpdated.equals(true)){
+                Toast.makeText(this, "Account updated!", Toast.LENGTH_SHORT).show();
+                edtUpdateName.getText().clear();
+                edtUpdateLastname.getText().clear();
+                edtUpdateUsername.getText().clear();
+                edtUpdateEmail.getText().clear();
+                edtUpdatePassword.getText().clear();}
         }else {
 
             Toast.makeText(this, "Username or email is incorrect!", Toast.LENGTH_SHORT).show();
@@ -327,7 +327,7 @@ public class AdministratorUsers extends AppCompatActivity {
             txtEmail.setText("Email: "+getEmail);
             edtSearchUser.getText().clear();
 
-                   }else {
+        }else {
             Toast.makeText(AdministratorUsers.this, "Could not find that user! Please try again!", Toast.LENGTH_SHORT).show();
             txtUserId.setText("User Id: ");
             txtAnimeId.setText("Number Of Reviews: ");
@@ -367,21 +367,21 @@ public class AdministratorUsers extends AppCompatActivity {
 
     }
 
-public void displayData(String title, String message){
-AlertDialog.Builder builder=new AlertDialog.Builder(this);
-builder.setTitle(title);
-builder.setMessage(message);
-builder.show();
-}
-public void deleteUser(){
+    public void displayData(String title, String message){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
+    }
+    public void deleteUser(){
 
-Integer deleteRow= myDb.deleteUser(edtDeleteEmail.getText().toString(),edtDeleteUsername.getText().toString(),edtDeletePassword.getText().toString());
-if(deleteRow>0){
-    Toast.makeText(this, "Account Deleted!", Toast.LENGTH_SHORT).show();
+        Integer deleteRow= myDb.deleteUser(edtDeleteEmail.getText().toString(),edtDeleteUsername.getText().toString(),edtDeletePassword.getText().toString());
+        if(deleteRow>0){
+            Toast.makeText(this, "Account Deleted!", Toast.LENGTH_SHORT).show();
 
-}else
-    Toast.makeText(this, "Unable to delete account! Please try again", Toast.LENGTH_SHORT).show();
-}
+        }else
+            Toast.makeText(this, "Unable to delete account! Please try again", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

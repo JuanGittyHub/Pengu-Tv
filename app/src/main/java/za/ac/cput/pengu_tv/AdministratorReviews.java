@@ -148,7 +148,7 @@ public class AdministratorReviews extends AppCompatActivity {
         }
 
 
-        Toast.makeText(this, String.valueOf(tracer), Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, String.valueOf(tracer), Toast.LENGTH_SHORT).show();
 
         spAddReviewAnime= findViewById(R.id.spinnerAddReviewAnime);
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),R.layout.my_selected_item,anime);
@@ -335,7 +335,7 @@ average=rating+tracer+Double.valueOf(edtAddReviewRating.getText().toString());
 
                 boolean isUpdated = mydb.updateAnimeRating(animeId,average);
                 if (isUpdated==true){
-                Toast.makeText(this, String.valueOf(average), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, String.valueOf(average), Toast.LENGTH_SHORT).show();
             }
 
 
