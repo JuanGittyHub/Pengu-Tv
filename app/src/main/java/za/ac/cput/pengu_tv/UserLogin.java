@@ -9,8 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.application.R;
@@ -25,11 +28,16 @@ public class UserLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_userlogin);
 
         Button logBtn = findViewById(R.id.btnLogin);
         Button goRegBtn = findViewById(R.id.RegButton);
         Button goAdminBtn = findViewById(R.id.AdminB);
+        ImageView myImageView7= findViewById(R.id.imageView2);
+        myImageView7.setImageResource(R.drawable.pengu_tv);
         myDb = new DBHelper(UserLogin.this);
 
         edtUsername = (EditText) findViewById(R.id.username);

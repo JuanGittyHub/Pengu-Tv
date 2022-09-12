@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.application.R;
@@ -21,8 +24,12 @@ public class UserRegistration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_user_registration);
-
+        ImageView myImageView7= findViewById(R.id.imageView3);
+        myImageView7.setImageResource(R.drawable.pengu_tv);
 
         Button regBtn = findViewById(R.id.RegButton);
         Button Return = findViewById(R.id.UserLogbtn);
@@ -57,8 +64,7 @@ public class UserRegistration extends AppCompatActivity {
                 Firstnames.getText().toString().isEmpty() ||
                 Lastname.getText().toString().isEmpty()) {
             Toast.makeText(this, "Registration Failed, Fields Empty", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(UserRegistration.this, UserLogin.class);
-            startActivity(intent);
+
         }
         else
         {
@@ -70,6 +76,8 @@ public class UserRegistration extends AppCompatActivity {
             if(isInserted = true)
             {
                 Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(UserRegistration.this, UserLogin.class);
+                startActivity(intent);
             }
             else
             {
