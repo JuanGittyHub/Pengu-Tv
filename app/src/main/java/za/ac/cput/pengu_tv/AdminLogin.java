@@ -32,7 +32,7 @@ private EditText edtUsername,edtpassword;
 
 
         Button btnLogin = findViewById(R.id.btnLogin);
-        Button goRegBtn = findViewById(R.id.Register);
+        Button goRegBtn = findViewById(R.id.btnHome);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
