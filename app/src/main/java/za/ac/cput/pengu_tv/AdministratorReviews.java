@@ -22,19 +22,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.math.MathUtils;
 
 import com.android.application.R;
-
-import java.nio.Buffer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-
-import za.ac.cput.pengu_tv.util.DBHelper;
 
 public class AdministratorReviews extends AppCompatActivity {
 

@@ -1,8 +1,10 @@
 package za.ac.cput.pengu_tv;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import com.android.application.R;
 public class AboutPage extends AppCompatActivity {
     private Button signButton;
     private Button animeButton;
+    AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +32,7 @@ public class AboutPage extends AppCompatActivity {
         setContentView(R.layout.activity_about_page);
 
 
-
+        builder = new AlertDialog.Builder(this);
         signButton = (Button) findViewById(R.id.btnSignUp);
         signButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,9 +70,34 @@ public class AboutPage extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch(item.getItemId()){
+            case R.id.icLogout:
+                builder.setTitle("Warning!");
+                builder.setMessage("Do you wish to logout?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent =  new Intent(AboutPage.this,UserLogin.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                builder.show();
+                return true;
+            case R.id.icMain:
+                Toast.makeText(this, "Welcome to the anime page!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AboutPage.this,MainPage.class);
+                startActivity(intent);
+                return true;
             case R.id.icAbout:
                 Toast.makeText(this, "Welcome to Login page", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, AdminLogin.class);
+                intent = new Intent(this, AdminLogin.class);
                 startActivity(intent);
 
         }
