@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.android.application.R;
 
+import za.ac.cput.pengu_tv.util.DBHelper;
+
 public class UserRegistration extends AppCompatActivity {
     DBHelper myDb;
     private EditText username, Password, Email, Firstnames, Lastname;

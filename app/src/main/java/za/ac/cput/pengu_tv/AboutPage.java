@@ -33,32 +33,14 @@ public class AboutPage extends AppCompatActivity {
 
 
         builder = new AlertDialog.Builder(this);
-        signButton = (Button) findViewById(R.id.btnSignUp);
-        signButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openSignUpPage();
-            }
-        });
 
-        animeButton = (Button) findViewById(R.id.btnAnime);
-        animeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openAnimePage();
-            }
-        });
+
+
+
+
     }
 
-    public void openSignUpPage(){
-        Intent intent = new Intent(this, AdminLogin.class);
-        startActivity(intent);
-    }
 
-    public void openAnimePage(){
-        Intent intent = new Intent(this, AdminLogin.class);
-        startActivity(intent);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){

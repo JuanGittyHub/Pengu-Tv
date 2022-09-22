@@ -8,6 +8,8 @@ import android.view.WindowManager;
 
 import com.android.application.R;
 
+import za.ac.cput.pengu_tv.util.DBHelper;
+
 public class MainActivity extends AppCompatActivity {
 DBHelper myDb;
     @Override

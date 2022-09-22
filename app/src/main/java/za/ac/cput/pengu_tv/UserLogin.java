@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.android.application.R;
 
+import za.ac.cput.pengu_tv.util.DBHelper;
+
 public class UserLogin extends AppCompatActivity {
     DBHelper myDb;
     SQLiteDatabase sqLiteDatabase;
@@ -104,7 +106,7 @@ public class UserLogin extends AppCompatActivity {
             intent.putExtra("UserLogin",username);
             startActivity(intent);
         }
-        else
+        else if (!tempPassword.equalsIgnoreCase(password))
         {
             Toast.makeText(UserLogin.this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
         }

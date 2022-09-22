@@ -2,6 +2,7 @@ package za.ac.cput.pengu_tv;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,12 +17,22 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.application.R;
+
+import java.util.ArrayList;
+
+import za.ac.cput.pengu_tv.util.DBHelper;
 
 public class AdministratorRequests extends AppCompatActivity {
     AlertDialog.Builder builder;
     AlertDialog.Builder builderHelp;
+    DBHelper db;
+    RecyclerView recyclerView;
+    ArrayList<String> animeTitle, animeDescription, animeOngoing, animeEpisode,animeGenre,animeRating,username;
+    AdminRequestAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +40,30 @@ public class AdministratorRequests extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         builder= new AlertDialog.Builder(this);
         builderHelp= new AlertDialog.Builder(this);
+        db= new DBHelper(this);
 
+        animeTitle = new ArrayList<>();
+        animeDescription = new ArrayList<>();
+        animeOngoing = new ArrayList<>();
+        animeEpisode= new ArrayList<>();
+        animeGenre= new ArrayList<>();
+        animeRating= new ArrayList<>();
+        username= new ArrayList<>();
+
+        recyclerView = findViewById(R.id.recyclerView);
+        adapter = new AdminRequestAdapter(this,animeTitle,animeDescription,animeOngoing,animeEpisode,animeGenre,animeRating,username);
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        displayData();
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.black)));
         setContentView(R.layout.activity_administrator_requests);
         ImageView myImageView3= findViewById(R.id.requestsIcon);
         myImageView3.setImageResource(R.drawable.ic_baseline_emoji_people_24);
         Button btnRequestHelp = findViewById(R.id. btnRequestHelp);
+
+
         btnRequestHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,4 +133,21 @@ public class AdministratorRequests extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }}
+    private void displayData(){
+        Cursor cursor=db.viewAllRequests();
+        if (cursor.getCount()==0){
+            Toast.makeText(this, "There are no request entries at this time!", Toast.LENGTH_SHORT).show();
+            return;
+        }else{
+            while(cursor.moveToNext()){
+                username.add(cursor.getString(7));
+                animeTitle.add(cursor.getString(1));
+                animeDescription.add(cursor.getString(2));
+                animeOngoing.add(cursor.getString(3));
+                animeEpisode.add(cursor.getString(4));
+                animeGenre.add(cursor.getString(5));
+                animeRating.add(cursor.getString(6));
+            }
+        }
+    }
 }

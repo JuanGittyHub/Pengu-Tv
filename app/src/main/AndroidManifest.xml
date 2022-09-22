@@ -23,9 +23,7 @@
         <activity
             android:name=".UserRegistration"
             android:exported="true" />
-
         <activity
-
             android:name=".UserLogin"
             android:exported="true" />
         <activity
@@ -40,7 +38,6 @@
         <activity
             android:name=".AdministratorRequests"
             android:exported="true" />
-
         <activity
             android:name=".AdministratorAnime"
             android:exported="true" />

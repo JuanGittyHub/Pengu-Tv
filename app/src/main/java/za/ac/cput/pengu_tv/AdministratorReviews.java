@@ -25,6 +25,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.application.R;
 
+import za.ac.cput.pengu_tv.util.DBHelper;
+
 public class AdministratorReviews extends AppCompatActivity {
 
     DBHelper mydb;

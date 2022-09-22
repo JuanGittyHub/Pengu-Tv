@@ -1,4 +1,4 @@
-package za.ac.cput.pengu_tv;
+package za.ac.cput.pengu_tv.util;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,8 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String USER_TABLE_NAME="User_Table";
     public static final String ANIME_TABLE_NAME="ANIME_Table";
     public static final String  REVIEWS_TABLE_NAME="Review_Table";
+    public static final String  REQUEST_TABLE_NAME="Request_Table";
+
 
     public static final String COLUMN_1= "USERID";
     public static final String COLUMN_2= "REVIEWS";
@@ -41,6 +43,17 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String REVIEWCOLUMN_5="REVIEWDESCRIPTION";
     public static final String REVIEWCOLUMN_6="RATING";
 
+
+    public static final String REQUESTCOLUMN_1="REQUESTID";
+    public static final String REQUESTCOLUMN_2="REQUESTANIMETITLE";
+    public static final String REQUESTCOLUMN_3="REQUESTANIMEDESCRIPTION";
+    public static final String REQUESTCOLUMN_4="REQUESTANIMEONGOING";
+    public static final String REQUESTCOLUMN_5="REQUESTANIMEEPISODEAMOUNT";
+    public static final String REQUESTCOLUMN_6="REQUESTANIMEGENRE";
+    public static final String REQUESTCOLUMN_7="REQUESTANIMERATING";
+    public static final String REQUESTCOLUMN_8="REQUESTUSERNAME";
+
+
     public DBHelper(@Nullable Context context){
         super(context,DATABASE_NAME,null,1);
         SQLiteDatabase db= this.getWritableDatabase();
@@ -48,7 +61,7 @@ public class DBHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL("create table "+USER_TABLE_NAME+"(USERID INTEGER PRIMARY KEY AUTOINCREMENT,REVIEWS INTEGER,USERNAME STRING,USERLASTNAME STRING, USERUSERNAME STRING,USERPASSWORD STRING, USEREMAIL STRING)");
-
+        db.execSQL("create table "+REQUEST_TABLE_NAME+"(REQUESTID INTEGER PRIMARY KEY AUTOINCREMENT, REQUESTANIMETITLE STRING, REQUESTANIMEDESCRIPTION STRING, REQUESTANIMEONGOING STRING, REQUESTANIMEEPISODEAMOUNT LONG, REQUESTANIMEGENRE STRING, REQUESTANIMERATING DOUBLE, REQUESTUSERNAME STRING)");
         db.execSQL("create table "+ANIME_TABLE_NAME+"(ANIMEID INTEGER PRIMARY KEY AUTOINCREMENT,ANIMETITLE STRING,ANIMEDESCRIPTION STRING,ANIMETOTAL INTEGER,ANIMEONGOING STRING, ANIMEEPISODEAMOUNT LONG, ANIMEGENRE STRING,RATINGAVERAGE DOUBLE)");
         db.execSQL("create table "+REVIEWS_TABLE_NAME+"(REVIEWID INTEGER PRIMARY KEY AUTOINCREMENT,USERID INTEGER,ANIMEID INTEGER,REVIEWAMOUNT LONG, REVIEWDESCRIPTION STRING,RATING DOUBLE)");
 
@@ -59,6 +72,7 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + USER_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + ANIME_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + REVIEWS_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + REQUEST_TABLE_NAME);
         onCreate(db);
     }
     //-----------------------FOR USER TABLE------------------------//
@@ -312,4 +326,11 @@ public class DBHelper extends SQLiteOpenHelper{
     Cursor res;
     res= sqLiteDatabase.rawQuery(" AVERAGE " +" SELECT "+REVIEWCOLUMN_1+" from "+ REVIEWS_TABLE_NAME +" WHERE "+ANIMECOLUMN_1+ " = ? ");
 */
+public Cursor viewAllRequests(){
+    SQLiteDatabase db=this.getWritableDatabase();
+    Cursor res;
+    res= db.rawQuery("select * from "+ REQUEST_TABLE_NAME,null);
+    return res;
+
+}
 }

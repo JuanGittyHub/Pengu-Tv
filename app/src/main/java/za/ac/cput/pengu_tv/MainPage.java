@@ -18,7 +18,7 @@ import com.android.application.R;
 
 import androidx.annotation.NonNull;
 
-public class MainPage extends AppCompatActivity {
+public class MainPage extends AppCompatActivity{
     AlertDialog.Builder builder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,4 +72,6 @@ public class MainPage extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 }
