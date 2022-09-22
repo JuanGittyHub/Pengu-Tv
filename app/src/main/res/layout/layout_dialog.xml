@@ -9,7 +9,7 @@
         android:id="@+id/animeTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Baki"
+        android:hint="Anime Name"
         android:textColor="@color/white"
         android:textColorHint="#696969" />
 
@@ -17,18 +17,20 @@
         android:id="@+id/animeDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="#696969"
-        android:hint="Baki is a big boy"
+        android:layout_below="@+id/animeTitle"
+        android:hint="Your Description"
         android:textColor="@color/white"
-        android:layout_below="@+id/animeTitle"/>
+        android:textColorHint="#696969" />
+
 
     <Spinner
         android:id="@+id/animeGenre"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/animeDescription"
 
-        android:layout_marginHorizontal="40dp"
+        android:layout_marginHorizontal="0dp"
+        android:layout_marginTop="0dp"
         android:drawableStart="@drawable/ic_baseline_live_tv_24"
         android:hint="   Genre"
         android:outlineAmbientShadowColor="@color/white"
@@ -36,15 +38,14 @@
         android:textColor="@color/white"
         android:textColorHint="#696969" />
 
-
     <EditText
         android:id="@+id/animeRating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/animeGenre"
 
-        android:hint="2.4"
-        android:textColorHint="#696969"
+        android:hint="Rating of of 10"
         android:inputType="numberDecimal"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textColorHint="#696969" />
 </RelativeLayout>

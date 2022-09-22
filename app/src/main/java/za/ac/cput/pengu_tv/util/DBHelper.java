@@ -326,6 +326,25 @@ public class DBHelper extends SQLiteOpenHelper{
     Cursor res;
     res= sqLiteDatabase.rawQuery(" AVERAGE " +" SELECT "+REVIEWCOLUMN_1+" from "+ REVIEWS_TABLE_NAME +" WHERE "+ANIMECOLUMN_1+ " = ? ");
 */
+    public boolean insertRequest(String animeTitle, String animeDescription, String animeOngoing, Long animeEpisodeAmount, String animeGenre, Double animeRating, String username){
+        SQLiteDatabase db =this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+
+        contentValues.put(REQUESTCOLUMN_2,animeTitle);
+        contentValues.put(REQUESTCOLUMN_3,animeDescription);
+        contentValues.put(REQUESTCOLUMN_4,animeOngoing);
+        contentValues.put(REQUESTCOLUMN_5,animeEpisodeAmount);
+        contentValues.put(REQUESTCOLUMN_6,animeGenre);
+        contentValues.put(REQUESTCOLUMN_7,animeRating);
+        contentValues.put(REQUESTCOLUMN_8,username);
+
+        long result = db.insert(REQUEST_TABLE_NAME,null,contentValues);
+        if(result==-1) {
+            return false;
+        }else
+
+            return true;
+    }
 public Cursor viewAllRequests(){
     SQLiteDatabase db=this.getWritableDatabase();
     Cursor res;

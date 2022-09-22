@@ -23,6 +23,7 @@ public class AboutPage extends AppCompatActivity {
     private Button signButton;
     private Button animeButton;
     AlertDialog.Builder builder;
+    public String getUsername;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class AboutPage extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.black)));
         setContentView(R.layout.activity_about_page);
 
-
+        getUsername= getIntent().getStringExtra("loginUser");
         builder = new AlertDialog.Builder(this);
 
 
@@ -75,6 +76,7 @@ public class AboutPage extends AppCompatActivity {
             case R.id.icMain:
                 Toast.makeText(this, "Welcome to the anime page!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(AboutPage.this,MainPage.class);
+                intent.putExtra("loginUser",getUsername);
                 startActivity(intent);
                 return true;
             case R.id.icAbout:

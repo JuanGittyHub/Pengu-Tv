@@ -37,13 +37,14 @@ public class AdminRequestAdapter extends RecyclerView.Adapter<AdminRequestAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-    holder.username_id.setText(String.valueOf(username_id.get(position)));
+
     holder.animeTitle_id.setText(String.valueOf(animeTitle_id.get(position)));
     holder.animeDescription_id.setText(String.valueOf(animeDescription_id.get(position)));
     holder.animeOngoing_id.setText(String.valueOf(animeOngoing_id.get(position)));
-    holder.animeEpisode_id.setText(String.valueOf(animeOngoing_id.get(position)));
+    holder.animeEpisode_id.setText(String.valueOf(animeEpisode_id.get(position)));
     holder.animeGenre_id.setText(String.valueOf(animeGenre_id.get(position)));
     holder.animeRating_id.setText(String.valueOf(animeRating_id.get(position)));
+        holder.username_id.setText(String.valueOf(username_id.get(position)));
     }
 
     @Override
@@ -55,13 +56,14 @@ public class AdminRequestAdapter extends RecyclerView.Adapter<AdminRequestAdapte
         TextView animeTitle_id, animeDescription_id, animeOngoing_id, animeEpisode_id,animeGenre_id,animeRating_id,username_id;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            username_id = itemView.findViewById(R.id.txtUsernameText);
+
             animeTitle_id = itemView.findViewById(R.id.txtAnimeTitleText);
             animeDescription_id = itemView.findViewById(R.id.txtRequestAnimeDescriptionText);
             animeOngoing_id = itemView.findViewById(R.id.txtRequestOngoingText);
             animeEpisode_id = itemView.findViewById(R.id.txtRequestEpisodesText);
             animeGenre_id = itemView.findViewById(R.id.txtRequestGenreText);
             animeRating_id = itemView.findViewById(R.id.txtRequestRatingText);
+            username_id = itemView.findViewById(R.id.txtUsernameText);
         }
     }
 }

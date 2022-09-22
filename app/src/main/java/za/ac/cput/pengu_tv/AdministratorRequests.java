@@ -38,6 +38,8 @@ public class AdministratorRequests extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrator_requests);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.black)));
+        setContentView(R.layout.activity_administrator_requests);
         builder= new AlertDialog.Builder(this);
         builderHelp= new AlertDialog.Builder(this);
         db= new DBHelper(this);
@@ -55,10 +57,9 @@ public class AdministratorRequests extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         displayData();
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.black)));
-        setContentView(R.layout.activity_administrator_requests);
+
+
         ImageView myImageView3= findViewById(R.id.requestsIcon);
         myImageView3.setImageResource(R.drawable.ic_baseline_emoji_people_24);
         Button btnRequestHelp = findViewById(R.id. btnRequestHelp);
@@ -81,7 +82,7 @@ public class AdministratorRequests extends AppCompatActivity {
         });
 
     }
-    @Override
+   @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater= getMenuInflater();
         inflater.inflate(R.menu.navigation,menu);
@@ -140,13 +141,14 @@ public class AdministratorRequests extends AppCompatActivity {
             return;
         }else{
             while(cursor.moveToNext()){
-                username.add(cursor.getString(7));
+
                 animeTitle.add(cursor.getString(1));
                 animeDescription.add(cursor.getString(2));
                 animeOngoing.add(cursor.getString(3));
                 animeEpisode.add(cursor.getString(4));
                 animeGenre.add(cursor.getString(5));
                 animeRating.add(cursor.getString(6));
+                username.add(cursor.getString(7));
             }
         }
     }
