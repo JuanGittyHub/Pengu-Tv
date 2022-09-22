@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.45" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnAdminLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -65,7 +65,7 @@
     </Button>
 
     <Button
-        android:id="@+id/btnHome"
+        android:id="@+id/btnAdminHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 

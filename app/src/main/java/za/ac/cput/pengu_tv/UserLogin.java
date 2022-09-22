@@ -35,9 +35,10 @@ public class UserLogin extends AppCompatActivity {
 
         Button logBtn = findViewById(R.id.btnLogin);
         Button goRegBtn = findViewById(R.id.RegButton);
-        Button goAdminBtn = findViewById(R.id.AdminB);
+
+        Button btnHome= findViewById(R.id.btnReturn);
         ImageView myImageView7= findViewById(R.id.imageView2);
-        myImageView7.setImageResource(R.drawable.pengu_tv);
+        myImageView7.setImageResource(R.drawable.logo);
         myDb = new DBHelper(UserLogin.this);
 
         edtUsername = (EditText) findViewById(R.id.username);
@@ -51,7 +52,13 @@ public class UserLogin extends AppCompatActivity {
                 LoginFunction();
             }
         });
-
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserLogin.this, HomePage.class);
+                startActivity(intent);
+            }
+        });
         goRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,13 +67,7 @@ public class UserLogin extends AppCompatActivity {
             }
         });
 
-        goAdminBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(UserLogin.this, AdminLogin.class);
-                startActivity(intent);
-            }
-        });
+
     }
        @SuppressLint("Range")
         public void LoginFunction(){
@@ -98,7 +99,7 @@ public class UserLogin extends AppCompatActivity {
         {
             Toast.makeText(UserLogin.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(UserLogin.this, UserLogin.class);
+            Intent intent = new Intent(UserLogin.this, MainPage.class);
 
             intent.putExtra("UserLogin",username);
             startActivity(intent);

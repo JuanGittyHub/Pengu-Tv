@@ -29,10 +29,10 @@ public class UserRegistration extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_user_registration);
         ImageView myImageView7= findViewById(R.id.imageView3);
-        myImageView7.setImageResource(R.drawable.pengu_tv);
+        myImageView7.setImageResource(R.drawable.logo);
 
         Button regBtn = findViewById(R.id.RegButton);
-        Button Return = findViewById(R.id.UserLogbtn);
+        Button Return = findViewById(R.id.btnUserLogin);
         myDb = new DBHelper(this);
         username = (EditText) findViewById(R.id.username);
         Password = (EditText) findViewById(R.id.edtPassword);

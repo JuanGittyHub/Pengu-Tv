@@ -10,8 +10,18 @@
         android:theme="@style/Theme.PenguTV" >
         <activity
             android:name=".HomePage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
+            android:name=".MainPage"
+            android:exported="true" />
+        <activity
+            android:name=".AdminLogin"
+            android:exported="true" />
+        <activity
+            android:name=".UserRegistration"
+            android:exported="true" />
+        <activity
+
             android:name=".UserLogin"
             android:exported="true" />
         <activity

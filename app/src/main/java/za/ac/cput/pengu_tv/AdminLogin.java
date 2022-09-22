@@ -25,16 +25,16 @@ private EditText edtUsername,edtpassword;
         getSupportActionBar().hide();
         setContentView(R.layout.activity_admin_login);
         ImageView myImageView5= findViewById(R.id.pngAppLogo);
-        myImageView5.setImageResource(R.drawable.pengu_tv);
+        myImageView5.setImageResource(R.drawable.logo);
 
         edtUsername= (EditText) findViewById(R.id.edtUsername);
         edtpassword= (EditText) findViewById(R.id.edtPassword);
 
 
-        Button btnLogin = findViewById(R.id.btnLogin);
-        Button goRegBtn = findViewById(R.id.btnHome);
+        Button btnLogin = findViewById(R.id.btnAdminLogin);
+        Button goRegBtn = findViewById(R.id.btnAdminHome);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+       btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (edtUsername.getText().toString().equals("admin") && edtpassword.getText().toString().equals("admin")){
@@ -52,7 +52,7 @@ private EditText edtUsername,edtpassword;
         goRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(AdminLogin.this, UserRegistration.class);
+                Intent intent= new Intent(AdminLogin.this, HomePage.class);
                 startActivity(intent);
             }
         });
