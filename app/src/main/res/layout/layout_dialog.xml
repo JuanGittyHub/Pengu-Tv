@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/premium_dark"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/animeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Baki"
+        android:textColor="@color/white"
+        android:textColorHint="#696969" />
+
+    <EditText
+        android:id="@+id/animeDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#696969"
+        android:hint="Baki is a big boy"
+        android:textColor="@color/white"
+        android:layout_below="@+id/animeTitle"/>
+
+    <Spinner
+        android:id="@+id/animeGenre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/animeDescription"
+
+        android:layout_marginHorizontal="40dp"
+        android:drawableStart="@drawable/ic_baseline_live_tv_24"
+        android:hint="   Genre"
+        android:outlineAmbientShadowColor="@color/white"
+        android:outlineSpotShadowColor="@color/white"
+        android:textColor="@color/white"
+        android:textColorHint="#696969" />
+
+
+    <EditText
+        android:id="@+id/animeRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/animeGenre"
+
+        android:hint="2.4"
+        android:textColorHint="#696969"
+        android:inputType="numberDecimal"
+        android:textColor="@color/white" />
+</RelativeLayout>

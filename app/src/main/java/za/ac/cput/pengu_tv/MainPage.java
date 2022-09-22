@@ -12,6 +12,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.application.R;
@@ -20,6 +23,9 @@ import androidx.annotation.NonNull;
 
 public class MainPage extends AppCompatActivity{
     AlertDialog.Builder builder;
+    String getUsername;
+    private TextView textViewTitle, textViewDescription, textViewGenre,textViewRating;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +34,9 @@ public class MainPage extends AppCompatActivity{
         setContentView(R.layout.activity_main_page);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.black)));
         builder = new AlertDialog.Builder(this);
+        getUsername= getIntent().getStringExtra("loginUser");
+        Toast.makeText(this, "Welcome, "+getUsername+"!", Toast.LENGTH_SHORT).show();
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,6 +57,7 @@ public class MainPage extends AppCompatActivity{
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent =  new Intent(MainPage.this,UserLogin.class);
+                        Toast.makeText(MainPage.this, "Goodbye!", Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                         finish();
                     }
@@ -68,10 +78,15 @@ public class MainPage extends AppCompatActivity{
             case R.id.icMain:
                 Toast.makeText(this, "You're already on the main page!", Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.icRequest:
+                    openDialog();
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
+public void openDialog(){
+        ExampleDialog exampleDialog =  new ExampleDialog();
+        exampleDialog.show(getSupportFragmentManager(),"example dialog");
+}
 
 }

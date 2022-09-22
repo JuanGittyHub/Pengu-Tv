@@ -103,7 +103,7 @@ public class UserLogin extends AppCompatActivity {
 
             Intent intent = new Intent(UserLogin.this, MainPage.class);
 
-            intent.putExtra("UserLogin",username);
+            intent.putExtra("loginUser",username);
             startActivity(intent);
         }
         else if (!tempPassword.equalsIgnoreCase(password))
