@@ -32,7 +32,7 @@ public class AboutPage extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.black)));
         setContentView(R.layout.activity_about_page);
 
-        getUsername= getIntent().getStringExtra("loginUser");
+        getUsername= getIntent().getStringExtra("extendUsername");
         builder = new AlertDialog.Builder(this);
 
 
@@ -61,7 +61,9 @@ public class AboutPage extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent =  new Intent(AboutPage.this,UserLogin.class);
+
                         startActivity(intent);
+
                         finish();
                     }
                 });
@@ -76,13 +78,12 @@ public class AboutPage extends AppCompatActivity {
             case R.id.icMain:
                 Toast.makeText(this, "Welcome to the anime page!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(AboutPage.this,MainPage.class);
-                intent.putExtra("loginUser",getUsername);
+                intent.putExtra("returnUser",getUsername);
                 startActivity(intent);
                 return true;
             case R.id.icAbout:
-                Toast.makeText(this, "Welcome to Login page", Toast.LENGTH_SHORT).show();
-                intent = new Intent(this, AdminLogin.class);
-                startActivity(intent);
+                Toast.makeText(this, "You're already on the about page!", Toast.LENGTH_SHORT).show();
+                
 
         }
         return true;

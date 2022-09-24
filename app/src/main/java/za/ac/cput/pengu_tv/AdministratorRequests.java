@@ -135,6 +135,7 @@ public class AdministratorRequests extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }}
     private void displayData(){
+        int i;
         Cursor cursor=db.viewAllRequests();
         if (cursor.getCount()==0){
             Toast.makeText(this, "There are no request entries at this time!", Toast.LENGTH_SHORT).show();

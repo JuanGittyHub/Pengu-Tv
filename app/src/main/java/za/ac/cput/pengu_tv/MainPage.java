@@ -27,7 +27,8 @@ import za.ac.cput.pengu_tv.util.DBHelper;
 
 public class MainPage extends AppCompatActivity implements ExampleDialog.ExampleDialogListener{
     AlertDialog.Builder builder;
-    public String getUsername;
+    String getUsername;
+    String returnUser=null;
     DBHelper db;
     SQLiteDatabase sqLiteDatabase;
     @Override
@@ -40,7 +41,10 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
 
         db= new DBHelper(this);
         builder = new AlertDialog.Builder(this);
+        returnUser= getIntent().getStringExtra("returnUser");
+
         getUsername= getIntent().getStringExtra("loginUser");
+        getUsername=returnUser;
         Toast.makeText(this, "Welcome, "+getUsername+"!", Toast.LENGTH_SHORT).show();
 
     }
@@ -79,6 +83,7 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
             case R.id.icAbout:
                 Toast.makeText(this, "Welcome to the about page!", Toast.LENGTH_SHORT).show();
                 Intent intent =  new Intent(MainPage.this,AboutPage.class);
+                intent.putExtra("extendUsername",getUsername);
                 startActivity(intent);
                 return true;
             case R.id.icMain:
