@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    app:cardElevation="16dp"
+    app:cardCornerRadius="16dp"
+    android:layout_margin="10dp"
+    >
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+
+
+        >
+
+        <ImageView
+            android:id="@+id/imgAnimeIcon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:padding="2dp" />
+
+
+
+        <TextView
+            android:id="@+id/txtAnimeListNameText"
+            style="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/imgAnimeIcon"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/txtAnimeListGenre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Genre: "
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            style="bold"
+            android:layout_toEndOf="@id/imgAnimeIcon"
+            android:layout_below="@+id/txtAnimeListNameText"
+            />
+        <TextView
+            android:id="@+id/txtAnimeListGenreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            style="bold"
+            android:layout_toEndOf="@id/txtAnimeListGenre"
+            android:layout_below="@+id/txtAnimeListNameText"
+            />
+        <TextView
+            android:id="@+id/txtAnimeListRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rating: "
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            style="bold"
+            android:layout_toEndOf="@id/imgAnimeIcon"
+            android:layout_below="@+id/txtAnimeListGenre"
+            />
+
+        <TextView
+            android:id="@+id/txtAnimeListRatingText"
+            style="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtAnimeListGenre"
+            android:layout_toEndOf="@id/txtAnimeListRating"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

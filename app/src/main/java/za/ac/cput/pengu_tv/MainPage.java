@@ -16,12 +16,17 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.application.R;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 import za.ac.cput.pengu_tv.util.DBHelper;
 
@@ -31,6 +36,10 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
     String returnUser=null;
     DBHelper db;
     SQLiteDatabase sqLiteDatabase;
+    ViewAnimeAdapter viewAnimeAdapter;
+    ArrayList<String> animeName,animeGenre,animeRating;
+    RecyclerView recyclerView;
+    ImageView myImageIcon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +56,20 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
         getUsername=returnUser;
         Toast.makeText(this, "Welcome, "+getUsername+"!", Toast.LENGTH_SHORT).show();
 
+        animeName= new ArrayList<>();
+        animeGenre= new ArrayList<>();
+        animeRating= new ArrayList<>();
+        myImageIcon = findViewById(R.id.imgAnimeIcon);
+        recyclerView= findViewById(R.id.recyclerViewMain);
+        viewAnimeAdapter = new ViewAnimeAdapter(this,animeName,animeGenre,animeRating,myImageIcon);
+
+        recyclerView.setAdapter(viewAnimeAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        displayData();
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -119,6 +141,20 @@ public void openDialog(){
     }
 
 
+    private void displayData() {
+        ImageView myImageView5 = findViewById(R.id.imgAnimeIcon);
+        Cursor cursor = db.viewAllAnime();
+        if (cursor.getCount() == 0) {
+            Toast.makeText(this, "There is no anime at this time!", Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+            while (cursor.moveToNext()) {
+                animeName.add(cursor.getString(1));
+                animeGenre.add(cursor.getString(6));
+                animeRating.add(cursor.getString(7));
+            }
+        }
+    }
 
 
 
