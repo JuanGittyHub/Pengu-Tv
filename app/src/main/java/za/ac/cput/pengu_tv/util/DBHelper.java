@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import za.ac.cput.pengu_tv.AdminRequestAdapter;
+
 public class DBHelper extends SQLiteOpenHelper{
     public static String getId;
     public static final String DATABASE_NAME="PenguTv.db";
@@ -58,6 +60,12 @@ public class DBHelper extends SQLiteOpenHelper{
         super(context,DATABASE_NAME,null,1);
         SQLiteDatabase db= this.getWritableDatabase();
     }
+
+    public DBHelper(@Nullable Object adminRequestAdapter) {
+        super((Context) adminRequestAdapter,DATABASE_NAME, null, 1);
+    }
+
+
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL("create table "+USER_TABLE_NAME+"(USERID INTEGER PRIMARY KEY AUTOINCREMENT,REVIEWS INTEGER,USERNAME STRING,USERLASTNAME STRING, USERUSERNAME STRING,USERPASSWORD STRING, USEREMAIL STRING)");
@@ -352,4 +360,9 @@ public Cursor viewAllRequests(){
     return res;
 
 }
+    public Integer deleteRequest(String animeName){
+        SQLiteDatabase db= this.getWritableDatabase();
+        return db.delete(REQUEST_TABLE_NAME,"REQUESTANIMETITLE = ?",new String[] {String.valueOf(animeName)});
+
+    }
 }

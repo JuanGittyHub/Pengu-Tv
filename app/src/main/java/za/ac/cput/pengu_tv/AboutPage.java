@@ -83,7 +83,7 @@ public class AboutPage extends AppCompatActivity {
                 return true;
             case R.id.icAbout:
                 Toast.makeText(this, "You're already on the about page!", Toast.LENGTH_SHORT).show();
-                
+
 
         }
         return true;

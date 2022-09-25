@@ -106,10 +106,7 @@ public void openDialog(){
         db = new DBHelper(getApplicationContext());
         sqLiteDatabase = db.getReadableDatabase();
 
-        Toast.makeText(this, animeTitle, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, animeDescription, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, animeGenre, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, String.valueOf(animeRating), Toast.LENGTH_SHORT).show();
+
 
         boolean isInserted= db.insertRequest(animeTitle,animeDescription,"Yes", Long.valueOf(0),animeGenre,Double.valueOf(animeRating),getUsername);
         if(isInserted==true){
