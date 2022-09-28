@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/premium_dark"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/reviewDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Write your review here..."
+        android:textColor="@color/white"
+        android:textColorHint="#696969" />
+
+    <EditText
+        android:id="@+id/reviewRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reviewDescription"
+        android:hint="Give your rating here..."
+        android:inputType="numberDecimal"
+        android:textColor="@color/white"
+        android:textColorHint="#696969" />
+
+
+</RelativeLayout>

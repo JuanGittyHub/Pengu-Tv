@@ -15,15 +15,17 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.application.R;
 
-public class AboutPage extends AppCompatActivity {
+public class AboutPage extends AppCompatActivity{
     private Button signButton;
     private Button animeButton;
     AlertDialog.Builder builder;
     public String getUsername;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,8 @@ public class AboutPage extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.black)));
         setContentView(R.layout.activity_about_page);
 
-        getUsername= getIntent().getStringExtra("extendUsername");
+        getUsername= getIntent().getStringExtra("extendUser");
+        Toast.makeText(this, "Welcome, "+getUsername+"!", Toast.LENGTH_SHORT).show();
         builder = new AlertDialog.Builder(this);
 
 
@@ -78,7 +81,7 @@ public class AboutPage extends AppCompatActivity {
             case R.id.icMain:
                 Toast.makeText(this, "Welcome to the anime page!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(AboutPage.this,MainPage.class);
-                intent.putExtra("returnUser",getUsername);
+                intent.putExtra("loginUser",getUsername);
                 startActivity(intent);
                 return true;
             case R.id.icAbout:
@@ -88,4 +91,5 @@ public class AboutPage extends AppCompatActivity {
         }
         return true;
     }
+
 }

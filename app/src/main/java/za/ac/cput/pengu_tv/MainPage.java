@@ -3,43 +3,48 @@ package za.ac.cput.pengu_tv;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.application.R;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import za.ac.cput.pengu_tv.util.DBHelper;
 
-public class MainPage extends AppCompatActivity implements ExampleDialog.ExampleDialogListener{
+public class MainPage extends AppCompatActivity implements ExampleDialog.ExampleDialogListener, RecyclerViewInterface{
+
     AlertDialog.Builder builder;
+
     String getUsername;
-    String returnUser=null;
     DBHelper db;
     SQLiteDatabase sqLiteDatabase;
     ViewAnimeAdapter viewAnimeAdapter;
     ArrayList<String> animeName,animeGenre,animeRating;
     RecyclerView recyclerView;
     ImageView myImageIcon;
+
+
+    private SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +55,30 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
 
         db= new DBHelper(this);
         builder = new AlertDialog.Builder(this);
-        returnUser= getIntent().getStringExtra("returnUser");
+   /* searchView= findViewById(R.id.searchView);
+    searchView.clearFocus();
+    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            filterList(newText);
+            return false;
+        }
+    });*/
 
         getUsername= getIntent().getStringExtra("loginUser");
-        getUsername=returnUser;
+
+
+       // Intent getName=  new Intent();
+        //getName.putExtra(AboutPage.)
+
+
+
+
         Toast.makeText(this, "Welcome, "+getUsername+"!", Toast.LENGTH_SHORT).show();
 
         animeName= new ArrayList<>();
@@ -61,13 +86,24 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
         animeRating= new ArrayList<>();
         myImageIcon = findViewById(R.id.imgAnimeIcon);
         recyclerView= findViewById(R.id.recyclerViewMain);
-        viewAnimeAdapter = new ViewAnimeAdapter(this,animeName,animeGenre,animeRating,myImageIcon);
+        viewAnimeAdapter = new ViewAnimeAdapter(this, animeName, animeGenre, animeRating, myImageIcon, this) {
+
+        };
 
         recyclerView.setAdapter(viewAnimeAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         displayData();
+
     }
+
+    /*private void filterList(String text) {
+        List<ClipData.Item> filteredList = new ArrayList<>();
+        for (ClipData.Item item: this.viewAnimeAdapter){
+
+        }
+*/
+
 
 
     @Override
@@ -89,8 +125,9 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent =  new Intent(MainPage.this,UserLogin.class);
-                        Toast.makeText(MainPage.this, "Goodbye!", Toast.LENGTH_SHORT).show();
-                        startActivity(intent);
+                        Toast.makeText(MainPage.this, "Goodbye, "+getUsername+"!", Toast.LENGTH_SHORT).show();
+                        deleteUsername();
+                         startActivity(intent);
                         finish();
                     }
                 });
@@ -104,15 +141,21 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
                 return true;
             case R.id.icAbout:
                 Toast.makeText(this, "Welcome to the about page!", Toast.LENGTH_SHORT).show();
-                Intent intent =  new Intent(MainPage.this,AboutPage.class);
-                intent.putExtra("extendUsername",getUsername);
+               Intent intent= new Intent(MainPage.this,AboutPage.class);
+               intent.putExtra("extendUser",getUsername);
                 startActivity(intent);
+
+
+
                 return true;
             case R.id.icMain:
+                Intent intent1= new Intent(this,DescriptionPage.class);
+                intent1.putExtra("extendUser",getUsername);
+                startActivity(intent1);
                 Toast.makeText(this, "You're already on the main page!", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.icRequest:
-                    openDialog();
+openDialog();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -158,4 +201,17 @@ public void openDialog(){
 
 
 
+
+    @Override
+    public void onItemClick(int position) {
+
+
+        Intent intent =  new Intent(MainPage.this,DescriptionPage.class);
+
+    }
+
+    public void deleteUsername(){
+        db.deleteUsername();
+
+    }
 }

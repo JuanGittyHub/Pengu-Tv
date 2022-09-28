@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/premium_dark"
+    android:padding="16dp"
+    tools:context="za.ac.cput.pengu_tv.DescriptionPage">
+
+    <ImageView
+
+        android:id="@+id/imgDescriptionIcon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:padding="2dp" />
+
+
+    <TextView
+        android:id="@+id/txtDescriptionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgDescriptionIcon"
+        android:hint=""
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="#696969"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/spacer0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtDescriptionTitle" />
+
+    <TextView
+        android:id="@+id/txtDescriptionGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spacer0"
+        android:hint=""
+        android:text="Genre: "
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="#696969"
+
+
+        />
+
+    <TextView
+        android:id="@+id/txtDescriptionGenreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spacer0"
+        android:layout_toEndOf="@id/txtDescriptionGenre"
+        android:hint=""
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="#696969"
+
+
+        />
+    <TextView
+        android:id="@+id/spacer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtDescriptionGenre" />
+    <TextView
+        android:id="@+id/spacer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spacer1"/>
+
+    <TextView
+        android:id="@+id/txtDescriptionDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spacer2"
+        android:hint=""
+
+        android:textColor="@color/white"
+        android:textColorHint="#696969" />
+
+    <TextView
+        android:id="@+id/spacer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtDescriptionDescription" />
+
+    <TextView
+        android:id="@+id/spacer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spacer3" />
+
+    <TextView
+        android:id="@+id/txtDescriptionRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spacer4"
+        android:hint=""
+        android:text="Rating: "
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="#696969" />
+
+    <TextView
+        android:id="@+id/txtDescriptionRatingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spacer4"
+        android:layout_toEndOf="@id/txtDescriptionRating"
+        android:hint=""
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="#696969" />
+
+    <Button
+        android:id="@+id/btnDescriptionReviews"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spacer6"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/outline_button"
+        android:text="View Reviews"
+        android:textColor="@color/white"
+
+        />
+    <TextView
+        android:id="@+id/spacer5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnDescriptionReviews" />
+    <TextView
+        android:id="@+id/spacer6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtDescriptionRating" />
+
+    <Button
+        android:id="@+id/btnDescriptionAddReview"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spacer5"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/outline_button"
+        android:text="Add Review"
+        android:textColor="@color/white"
+
+
+        />
+    <TextView
+        android:id="@+id/spacer7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnDescriptionAddReview" />
+
+    <Button
+        android:id="@+id/btnDescriptionReturn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spacer7"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/outline_button"
+        android:text="Return"
+        android:textColor="@color/white"
+
+
+        />
+</RelativeLayout>

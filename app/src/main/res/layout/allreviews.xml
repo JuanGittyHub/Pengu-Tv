@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp"
     app:cardElevation="16dp"
     app:cardCornerRadius="16dp"
-    android:layout_margin="10dp"
-    >
-
-
+    android:layout_margin="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,45 +17,43 @@
         >
 
         <ImageView
-            android:id="@+id/imgAnimeIcon"
+            android:id="@+id/imgReviewIcon"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:padding="2dp" />
 
 
-
         <TextView
-            android:id="@+id/txtAnimeListNameText"
+            android:id="@+id/txtReviewListNameText"
             style="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/imgAnimeIcon"
+            android:layout_toEndOf="@id/imgReviewIcon"
             android:text=""
             android:textColor="@color/white"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txtAnimeListGenre"
             style="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtAnimeListNameText"
-            android:layout_toEndOf="@id/imgAnimeIcon"
+            android:layout_below="@+id/txtReviewListNameText"
+            android:layout_toEndOf="@id/imgReviewIcon"
             android:text="Genre: "
             android:textColor="@color/white"
             android:textSize="15dp" />
+
         <TextView
-            android:id="@+id/txtAnimeListGenreText"
+            android:id="@+id/txtReviewListGenreText"
+            style="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="15dp"
-            android:textColor="@color/white"
-            style="bold"
+            android:layout_below="@+id/txtReviewListNameText"
             android:layout_toEndOf="@id/txtAnimeListGenre"
-            android:layout_below="@+id/txtAnimeListNameText"
-            />
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="15dp" />
         <TextView
             android:id="@+id/txtAnimeListRating"
             android:layout_width="wrap_content"
@@ -67,12 +62,12 @@
             android:textSize="15dp"
             android:textColor="@color/white"
             style="bold"
-            android:layout_toEndOf="@id/imgAnimeIcon"
+            android:layout_toEndOf="@id/imgReviewIcon"
             android:layout_below="@+id/txtAnimeListGenre"
             />
 
         <TextView
-            android:id="@+id/txtAnimeListRatingText"
+            android:id="@+id/txtReviewListRatingText"
             style="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

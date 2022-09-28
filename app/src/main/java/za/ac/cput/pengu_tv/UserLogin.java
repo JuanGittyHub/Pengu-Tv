@@ -26,7 +26,8 @@ public class UserLogin extends AppCompatActivity {
     String username, password, tempPassword, temp_name;
     boolean emptyTextEmptyHolder;
     private EditText edtUsername, edtPassword;
-
+        DescriptionPage descriptionPage;
+    int mainPage= 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,11 +105,21 @@ public class UserLogin extends AppCompatActivity {
             Intent intent = new Intent(UserLogin.this, MainPage.class);
 
             intent.putExtra("loginUser",username);
+            boolean isInserted= myDb.insertUsername(username);
+            if (isInserted==true){
+
+
+            }else{
+                Toast.makeText(this, "Not Added", Toast.LENGTH_SHORT).show();
+            }
             startActivity(intent);
+
+
         }
         else if (!tempPassword.equalsIgnoreCase(password))
         {
             Toast.makeText(UserLogin.this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
+
         }
 
         tempPassword = "NOT_FOUND";

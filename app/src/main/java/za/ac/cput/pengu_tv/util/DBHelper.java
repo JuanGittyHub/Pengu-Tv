@@ -1,14 +1,11 @@
 package za.ac.cput.pengu_tv.util;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
-
-import za.ac.cput.pengu_tv.AdminRequestAdapter;
 
 public class DBHelper extends SQLiteOpenHelper{
     public static String getId;
@@ -17,6 +14,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String ANIME_TABLE_NAME="ANIME_Table";
     public static final String  REVIEWS_TABLE_NAME="Review_Table";
     public static final String  REQUEST_TABLE_NAME="Request_Table";
+    public static final String USERNAME_TABLE_NAME="Username_Table";
 
 
     public static final String COLUMN_1= "USERID";
@@ -55,6 +53,8 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String REQUESTCOLUMN_7="REQUESTANIMERATING";
     public static final String REQUESTCOLUMN_8="REQUESTUSERNAME";
 
+    public static final String USERNAMEUSERNAME_1= "USERNAMEUSERNAME";
+
 
     public DBHelper(@Nullable Context context){
         super(context,DATABASE_NAME,null,1);
@@ -72,6 +72,7 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL("create table "+REQUEST_TABLE_NAME+"(REQUESTID INTEGER PRIMARY KEY AUTOINCREMENT, REQUESTANIMETITLE STRING, REQUESTANIMEDESCRIPTION STRING, REQUESTANIMEONGOING STRING, REQUESTANIMEEPISODEAMOUNT LONG, REQUESTANIMEGENRE STRING, REQUESTANIMERATING DOUBLE, REQUESTUSERNAME STRING)");
         db.execSQL("create table "+ANIME_TABLE_NAME+"(ANIMEID INTEGER PRIMARY KEY AUTOINCREMENT,ANIMETITLE STRING,ANIMEDESCRIPTION STRING,ANIMETOTAL INTEGER,ANIMEONGOING STRING, ANIMEEPISODEAMOUNT LONG, ANIMEGENRE STRING,RATINGAVERAGE DOUBLE)");
         db.execSQL("create table "+REVIEWS_TABLE_NAME+"(REVIEWID INTEGER PRIMARY KEY AUTOINCREMENT,USERID INTEGER,ANIMEID INTEGER,REVIEWAMOUNT LONG, REVIEWDESCRIPTION STRING,RATING DOUBLE)");
+        db.execSQL("create table "+USERNAME_TABLE_NAME+"(USERNAMEUSERNAME STRING)");
 
     }
 
@@ -81,6 +82,7 @@ public class DBHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + ANIME_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + REVIEWS_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + REQUEST_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + USERNAME_TABLE_NAME);
         onCreate(db);
     }
     //-----------------------FOR USER TABLE------------------------//
@@ -105,6 +107,26 @@ public class DBHelper extends SQLiteOpenHelper{
         else
             getId=String.valueOf(result);
         return true;
+    }
+    public boolean insertUsername(String username){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=  new ContentValues();
+
+        contentValues.put(USERNAMEUSERNAME_1,username);
+
+        long result= db.insert(USERNAME_TABLE_NAME,null, contentValues);
+        if (result==-1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    public Cursor searchUsername(String username, SQLiteDatabase sqLiteDatabase){
+        String[] projections={USERNAMEUSERNAME_1};
+        String selection= USERNAMEUSERNAME_1+" LIKE ? ";
+        String[] selection_args={username};
+        Cursor res= sqLiteDatabase.query(USERNAME_TABLE_NAME,projections,selection,selection_args,null,null,null);
+        return res;
     }
     //----------Update User Section----------//
     public Cursor  checkUserUsername(String username,SQLiteDatabase db){
@@ -143,6 +165,16 @@ public class DBHelper extends SQLiteOpenHelper{
         SQLiteDatabase db= this.getWritableDatabase();
         return db.delete(USER_TABLE_NAME,"USEREMAIL = ? AND USERUSERNAME = ? AND USERPASSWORD = ?",new String[]{email,username,password});
     }
+    public void deleteUsername(){
+        SQLiteDatabase db= this.getWritableDatabase();
+        db.delete(USERNAME_TABLE_NAME,null,null);
+        db.execSQL("delete from "+ USERNAME_TABLE_NAME);
+
+        db.close();
+
+
+    }
+
 
     public Cursor searchUser(String username, SQLiteDatabase sqLiteDatabase){
         String[] projections={COLUMN_1,COLUMN_2,COLUMN_3,COLUMN_4,COLUMN_5,COLUMN_6,COLUMN_7};
@@ -155,6 +187,13 @@ public class DBHelper extends SQLiteOpenHelper{
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor res;
         res= db.rawQuery("select * from "+ USER_TABLE_NAME,null);
+        return res;
+
+    }
+    public Cursor viewAllUsernames(){
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor res;
+        res= db.rawQuery("select * from "+ USERNAME_TABLE_NAME,null);
         return res;
 
     }
@@ -364,5 +403,20 @@ public Cursor viewAllRequests(){
         SQLiteDatabase db= this.getWritableDatabase();
         return db.delete(REQUEST_TABLE_NAME,"REQUESTANIMETITLE = ?",new String[] {String.valueOf(animeName)});
 
+    }
+    public Cursor getAllReviewsById(String getId){
+        SQLiteDatabase db= this.getWritableDatabase();
+
+Cursor res;
+        res=db.rawQuery( "SELECT  FROM "+ REVIEWS_TABLE_NAME + " WHERE "+ REVIEWCOLUMN_3 +" = "+ getId,null);
+        return res;
+
+    }
+    public Cursor searchUserNames(int reviewId, SQLiteDatabase sqLiteDatabase) {
+        String[] projections = {REVIEWCOLUMN_1, REVIEWCOLUMN_2, REVIEWCOLUMN_3, REVIEWCOLUMN_4, REVIEWCOLUMN_5, REVIEWCOLUMN_6};
+        String selection = REVIEWCOLUMN_1+ " LIKE ? ";
+        String[] selection_args = {String.valueOf(reviewId)};
+        Cursor res = sqLiteDatabase.query(REVIEWS_TABLE_NAME, projections, selection, selection_args, null, null, null);
+        return res;
     }
 }

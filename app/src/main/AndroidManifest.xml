@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PenguTV">
         <activity
+            android:name="za.ac.cput.pengu_tv.DescriptionPage"
+            android:exported="false" />
+        <activity
             android:name=".HomePage"
             android:exported="true" />
         <activity
