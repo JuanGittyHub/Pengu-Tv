@@ -55,7 +55,7 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
 
         db= new DBHelper(this);
         builder = new AlertDialog.Builder(this);
-   /* searchView= findViewById(R.id.searchView);
+    searchView= findViewById(R.id.searchView);
     searchView.clearFocus();
     searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
         @Override
@@ -65,12 +65,12 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
 
         @Override
         public boolean onQueryTextChange(String newText) {
-            filterList(newText);
+        //    filterList(newText);
             return false;
         }
-    });*/
+    });
 
-        getUsername= getIntent().getStringExtra("loginUser");
+        getUsername= getIntent().getStringExtra(" loginUser");
 
 
        // Intent getName=  new Intent();
@@ -79,7 +79,6 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
 
 
 
-        Toast.makeText(this, "Welcome, "+getUsername+"!", Toast.LENGTH_SHORT).show();
 
         animeName= new ArrayList<>();
         animeGenre= new ArrayList<>();
@@ -98,13 +97,15 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
     }
 
     /*private void filterList(String text) {
-        List<ClipData.Item> filteredList = new ArrayList<>();
-        for (ClipData.Item item: this.viewAnimeAdapter){
+
+
+        for (String anime : animeName) {
+            if (anime.toLowerCase().contains(n)  )
 
         }
-*/
 
 
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

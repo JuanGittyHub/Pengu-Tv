@@ -50,6 +50,7 @@ public class ViewReviewsAdapter extends RecyclerView.Adapter<ViewReviewsAdapter.
         holder.txtUserId.setText(String.valueOf(txtUserId.get(position)));
         holder.txtDescription.setText(String.valueOf(txtDescription.get(position)));
         holder.txtRating.setText(String.valueOf(txtRating.get(position)));
+        holder.imageView.setImageResource(R.drawable.ic_person);
 
 
     }
@@ -71,5 +72,7 @@ ImageView imageView;
             imageView= itemView.findViewById(R.id.imgReviewIcon);
 
         }
+
     }
+
 }

@@ -44,7 +44,7 @@ public class DescriptionDialog extends AppCompatDialogFragment {
         View view = inflater.inflate(R.layout.review_popup,null);
 
         txtAnimeId = getActivity().getIntent().getStringExtra("passAnimeId");
-        Toast.makeText(getContext(), txtAnimeId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), ""+txtAnimeId, Toast.LENGTH_SHORT).show();
         builder.setView(view).setTitle("Reviews").setNegativeButton("Close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
@@ -62,25 +62,11 @@ public class DescriptionDialog extends AppCompatDialogFragment {
         recyclerView.setAdapter(viewReviewsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-      //  displayData();
+     //  displayData();
         return builder.create();
     }
 
-    private void displayData() {
-        Cursor cursor = db.getAllReviewsById(txtAnimeId);
-        if (cursor.getCount()==0){
-            Toast.makeText(getContext(), "There is no reviews for this anime yet!", Toast.LENGTH_SHORT).show();
-            return;
-        }else{
-            while (cursor.moveToNext()){
-                txtUserId.add(cursor.getString(1));
-                txtDescription.add(cursor.getString(4));
-                txtRating.add(cursor.getString(5));
-            }
 
-        }
-
-    }
 
 
     @Override

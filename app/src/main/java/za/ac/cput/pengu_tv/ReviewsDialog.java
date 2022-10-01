@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ public class ReviewsDialog extends AppCompatDialogFragment {
     private EditText editReviewDescription, edtReviewRating;
     private ReviewDialogListener listener;
     String getUser,getAnime;
+    ImageView imageView;
     DBHelper db;
 SQLiteDatabase sqLiteDatabase;
 
@@ -56,6 +58,7 @@ SQLiteDatabase sqLiteDatabase;
        });
        editReviewDescription= (EditText) view.findViewById(R.id.reviewDescription);
        edtReviewRating= (EditText) view.findViewById(R.id.reviewRating);
+       imageView= view.findViewById(R.id.imgReviewIcon);
        return builder.create();
     }
 

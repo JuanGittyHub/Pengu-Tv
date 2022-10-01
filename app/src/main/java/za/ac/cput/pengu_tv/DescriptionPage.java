@@ -1,5 +1,6 @@
 package za.ac.cput.pengu_tv;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 
 import com.android.application.R;
 
+import java.util.ArrayList;
+
 import za.ac.cput.pengu_tv.util.DBHelper;
 
 public class DescriptionPage extends AppCompatActivity implements DescriptionDialog.DescriptionDialogListener,ReviewsDialog.ReviewDialogListener{
@@ -24,6 +27,8 @@ public class DescriptionPage extends AppCompatActivity implements DescriptionDia
     String getTitle,getGenre,getDescription, getRating, getUser,getId;
     private Button btnView,btnAdd, btnReturn;
     DBHelper db;
+    ViewReviewsAdapter viewReviewsAdapter;
+    //ArrayList<String> animeUserId,animeReview;
     SQLiteDatabase sqLiteDatabase;
 MainPage mainPage;
 
@@ -37,14 +42,13 @@ MainPage mainPage;
 
 
         getUser= getIntent().getStringExtra("passUsername");
-      // getUser= getIntent().getStringExtra("extendUser");
-        //Toast.makeText(this, "Welcome, "+getUser+"!", Toast.LENGTH_SHORT).show();
+
         getTitle =  getIntent().getStringExtra("passName");
         getDescription =  getIntent().getStringExtra("passDescription");
         getGenre =  getIntent().getStringExtra("passGenre");
         getRating =  getIntent().getStringExtra("passRating");
         getId = getIntent().getStringExtra("passAnimeId");
-
+        db=new DBHelper(this);
 
         txtTitle= (TextView) findViewById(R.id.txtDescriptionTitle);
         txtGenre= (TextView) findViewById(R.id.txtDescriptionGenreText);
@@ -91,7 +95,9 @@ MainPage mainPage;
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openReviewDialog();
+               // openReviewDialog();
+            getAllReview();
+
             }
         });
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +121,6 @@ MainPage mainPage;
         DescriptionDialog descriptionDialog =  new DescriptionDialog();
         descriptionDialog.show(getSupportFragmentManager(),"review dialog");
     }
-
 
     @Override
     public void applyDescriptionTexts(String title, String genre, String Description, String rating, ImageView icon) {
@@ -145,4 +150,39 @@ MainPage mainPage;
             }
         }
     }
-}
+    public void getAllReview(){
+
+        getId = getIntent().getStringExtra("passAnimeId");
+        Cursor res;
+        res=db.viewAllReview(getId);
+
+        String getReviewAmount;
+        getReviewAmount=String.valueOf(res.getCount());
+        if(res.getCount()==0){
+            displayData("Error","There is no reviews at the moment...");
+            return;
+        }
+        StringBuffer buffer= new StringBuffer();
+        while (res.moveToNext()){
+            buffer.append("================================\n"+
+                    "Review Id: "+res.getString(0)+"\n");
+            buffer.append("User Id: "+res.getString(1)+"\n");
+            buffer.append("Anime Id: "+res.getString(2)+"\n");
+            buffer.append("Review Description: "+res.getString(4)+"\n");
+            buffer.append("Personal Rating: "+res.getString(5)+"\n================================\n\n" );
+        }
+        if (res.getCount()==1) {
+            displayData("Currently " + getReviewAmount + " review", buffer.toString());
+        }else{
+            displayData("Currently " + getReviewAmount + " reviews", buffer.toString());
+
+        }
+    }
+    public void displayData(String title,String message){
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
+    }
+    }
+

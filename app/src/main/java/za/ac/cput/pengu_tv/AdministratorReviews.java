@@ -124,7 +124,7 @@ public class AdministratorReviews extends AppCompatActivity {
         }
         i=0;
         tracer= 0.0;
-        Cursor getRatings;
+        /*Cursor getRatings;
         getRatings=mydb.viewAllReview();
         Double[] ratings= new Double[getRatings.getCount()];
         while(getRatings.moveToNext()){
@@ -136,7 +136,7 @@ public class AdministratorReviews extends AppCompatActivity {
 
             tracer= ratings[i]+tracer;
             ++i;
-        }
+        }*/
 
 
       //  Toast.makeText(this, String.valueOf(tracer), Toast.LENGTH_SHORT).show();
@@ -451,7 +451,7 @@ average=rating+tracer+Double.valueOf(edtAddReviewRating.getText().toString());
 
         int animeId=Integer.valueOf(edtViewReview.getText().toString());
         Cursor res;
-        res=mydb.viewAllReview();
+        res=mydb.viewAllReview(String.valueOf(animeId));
         String getReviewAmount;
         getReviewAmount=String.valueOf(res.getCount());
         if(res.getCount()==0){

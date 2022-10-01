@@ -112,6 +112,7 @@ public class UserLogin extends AppCompatActivity {
             }else{
                 Toast.makeText(this, "Not Added", Toast.LENGTH_SHORT).show();
             }
+            Toast.makeText(UserLogin.this, "Welcome, "+username+"!", Toast.LENGTH_SHORT).show();
             startActivity(intent);
 
 

@@ -354,7 +354,7 @@ public class DBHelper extends SQLiteOpenHelper{
         Cursor res = sqLiteDatabase.query(REVIEWS_TABLE_NAME, projections, selection, selection_args, null, null, null);
         return res;
     }
-    public Cursor viewAllReview(){
+    public Cursor viewAllReview(String animeId){
     /*String selection= ANIMECOLUMN_1+ " LIKE ? ";
    String[] selection_args= {String.valueOf(animeId)};
    String[] projections = {REVIEWCOLUMN_1,REVIEWCOLUMN_2,REVIEWCOLUMN_3,REVIEWCOLUMN_5,REVIEWCOLUMN_6};*/
@@ -362,7 +362,14 @@ public class DBHelper extends SQLiteOpenHelper{
         SQLiteDatabase sqLiteDatabase= this.getWritableDatabase();
 
         Cursor res;
-        res= sqLiteDatabase.rawQuery("select * from "+REVIEWS_TABLE_NAME,null);
+        res= sqLiteDatabase.rawQuery("select * from "+REVIEWS_TABLE_NAME+" where ANIMEID = ?",new String[]{animeId});
+        return res;
+    }
+    public Cursor viewUsername(String userId){
+        SQLiteDatabase sqLiteDatabase= this.getWritableDatabase();
+
+        Cursor res;
+        res= sqLiteDatabase.rawQuery("select * from "+USER_TABLE_NAME+" where USERID = ?",new String[]{userId});
         return res;
     }
 
@@ -404,11 +411,10 @@ public Cursor viewAllRequests(){
         return db.delete(REQUEST_TABLE_NAME,"REQUESTANIMETITLE = ?",new String[] {String.valueOf(animeName)});
 
     }
-    public Cursor getAllReviewsById(String getId){
-        SQLiteDatabase db= this.getWritableDatabase();
-
-Cursor res;
-        res=db.rawQuery( "SELECT  FROM "+ REVIEWS_TABLE_NAME + " WHERE "+ REVIEWCOLUMN_3 +" = "+ getId,null);
+    public Cursor getAllReviewsById(){
+        SQLiteDatabase sqLiteDatabase= this.getWritableDatabase();
+        Cursor res;
+        res= sqLiteDatabase.rawQuery("select * from "+REVIEWS_TABLE_NAME,null);
         return res;
 
     }
