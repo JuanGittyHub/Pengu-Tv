@@ -21,6 +21,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.CallLog;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -129,7 +130,7 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
 
         //System.out.println( animeName.indexOf("Bleach")+" Anime Name Test");
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        edtSearch.setOnTouchListener(new View.OnTouchListener() {
+        /*edtSearch.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 final int DRAWABLE_LEFT = 0;
@@ -152,6 +153,22 @@ public class MainPage extends AppCompatActivity implements ExampleDialog.Example
                         }
                         return true;
                     }
+                }
+                return false;
+            }
+        });*/
+        edtSearch.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
+                //If the keyevent is a key-down event on the "enter" button
+                if(edtSearch.getText().toString().isEmpty()){
+
+                    removeItems();
+                    Toast.makeText(MainPage.this, "Please type in an anime before searching!", Toast.LENGTH_LONG).show();
+                    displayData();
+                    recyclerView.getAdapter().notifyDataSetChanged();
+                }else {
+                    removeItems();
+                    displayDataBySearch(edtSearch.getText().toString());
                 }
                 return false;
             }
