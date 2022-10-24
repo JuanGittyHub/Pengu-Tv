@@ -1,8 +1,11 @@
 package za.ac.cput.pengu_tv;
 
+import static za.ac.cput.pengu_tv.util.DBHelper.REVIEWS_TABLE_NAME;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,8 +26,14 @@ import za.ac.cput.pengu_tv.util.DBHelper;
 
 public class DescriptionPage extends AppCompatActivity implements DescriptionDialog.DescriptionDialogListener,ReviewsDialog.ReviewDialogListener{
     private ImageView descriptionIcon;
-    private TextView txtTitle,txtGenre,txtDescription, txtRating;
-    String getTitle,getGenre,getDescription, getRating, getUser,getId;
+    private TextView txtTitle,txtGenre,txtDescription, txtRating,txtEpisodes;
+    String getTitle;
+    String getGenre;
+    String getDescription;
+    String getRating;
+    String getUser;
+    String getEpisodes;
+    String getId;
     private Button btnView,btnAdd, btnReturn;
     DBHelper db;
     ViewReviewsAdapter viewReviewsAdapter;
@@ -47,6 +56,7 @@ MainPage mainPage;
         getDescription =  getIntent().getStringExtra("passDescription");
         getGenre =  getIntent().getStringExtra("passGenre");
         getRating =  getIntent().getStringExtra("passRating");
+        getEpisodes = getIntent().getStringExtra("passEpisodes");
         getId = getIntent().getStringExtra("passAnimeId");
         db=new DBHelper(this);
 
@@ -54,6 +64,7 @@ MainPage mainPage;
         txtGenre= (TextView) findViewById(R.id.txtDescriptionGenreText);
         txtDescription= (TextView) findViewById(R.id.txtDescriptionDescription);
         txtRating= (TextView) findViewById(R.id.txtDescriptionRatingText);
+        txtEpisodes= (TextView) findViewById(R.id.txtDescriptionEpisodeText);
         descriptionIcon = findViewById(R.id.imgDescriptionIcon);
         btnReturn =findViewById(R.id.btnDescriptionReturn);
         btnView =  findViewById(R.id.btnDescriptionReviews);
@@ -64,7 +75,9 @@ MainPage mainPage;
         txtTitle.setText(getTitle);
         txtDescription.setText(getDescription);
         txtGenre.setText(getGenre);
-        txtRating.setText(getRating);
+        txtEpisodes.setText(getEpisodes);
+        getRatings();
+
 
         if (txtGenre.getText().toString().equals("Action")){
             descriptionIcon.setImageResource(R.drawable.ic_action);
@@ -83,12 +96,12 @@ MainPage mainPage;
             Toast.makeText(this, "nu", Toast.LENGTH_SHORT).show();
         }
 
-
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DescriptionPage.this,MainPage.class);
                 intent.putExtra("loginUser",getUser);
+                getRatings();
                 startActivity(intent);
             }
         });
@@ -107,6 +120,8 @@ MainPage mainPage;
                 intent.putExtra("sendUser",getUser);
                 intent.putExtra("sendAnime",getTitle);
                 openSubmitReview();
+
+
             }
         });
     }
@@ -142,7 +157,7 @@ MainPage mainPage;
 
 
             boolean isInserted= db.insertReview(reviewDescription,rating,userId,animeId);
-
+            getRatings();
             if (isInserted==true){
                 Toast.makeText(this, "Your review has been submitted!", Toast.LENGTH_SHORT).show();
             }else{
@@ -159,7 +174,7 @@ MainPage mainPage;
         String getReviewAmount;
         getReviewAmount=String.valueOf(res.getCount());
         if(res.getCount()==0){
-            displayData("Error","There is no reviews at the moment...");
+            displayData("Error","There is no reviews for "+getTitle+" at the moment...");
             return;
         }
         StringBuffer buffer= new StringBuffer();
@@ -184,5 +199,27 @@ MainPage mainPage;
         builder.setMessage(message);
         builder.show();
     }
+    public Double getRatings() {
+        //db= new DBHelper(getApplicationContext());
+        sqLiteDatabase= db.getReadableDatabase();
+        String animeId= getId;
+        Double total = 0.0;
+        Double count = 0.0;
+        Cursor c = sqLiteDatabase.rawQuery("SELECT RATING from " + REVIEWS_TABLE_NAME + " where ANIMEID = ?", new String[]{animeId});
+        while (c.moveToNext()) {
+            @SuppressLint("Range") Double average = c.getDouble(c.getColumnIndex("RATING"));
+            total += (average);
+            count++;
+        }
+        String convert= String.format("%.1f",(total / count));
+        txtRating.setText(convert+"/10");
+        Boolean isUpdated= db.updateAnimeRatingById(Integer.valueOf(animeId),Double.valueOf(convert));
+
+        return total / count;
     }
+
+
+
+}
+
 

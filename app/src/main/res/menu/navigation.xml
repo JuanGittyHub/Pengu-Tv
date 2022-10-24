@@ -15,10 +15,7 @@
         android:enabled="false"
         app:showAsAction="always"/>
 
-    <item
-    android:title=""
-        android:enabled="false"
-    app:showAsAction="always"/>
+
 
     <item android:id="@+id/icUsers"
     android:icon="@drawable/ic_baseline_people_24"
@@ -45,7 +42,10 @@
         android:title="Requests"
         app:showAsAction="always|withText"
         />
-
+    <item
+        android:title=""
+        android:enabled="false"
+        app:showAsAction="always"/>
 
 
 </menu>

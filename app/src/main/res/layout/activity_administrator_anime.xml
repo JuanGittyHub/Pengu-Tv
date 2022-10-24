@@ -72,7 +72,7 @@
           android:id="@+id/AddAnimeHelp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="360dp"
+          android:layout_marginLeft="320dp"
           android:background="?android:attr/selectableItemBackground"
           android:drawableStart="@drawable/ic_help"
 
@@ -88,14 +88,14 @@
           android:textColor="@color/white"
           android:textColorHint="#696969"
           android:hint="   Anime Name"
-          android:layout_marginHorizontal="140dp"/>
+          android:layout_marginHorizontal="100dp"/>
 
       <EditText
           android:id="@+id/edtAddAnimeDescription"
           android:layout_width="200dp"
           android:layout_height="wrap_content"
           android:text=""
-
+          android:padding="10dp"
           android:hint=" Anime Description:"
           android:inputType="textMultiLine"
           android:lines="6"
@@ -103,7 +103,7 @@
           android:textColorHint="#696969"
           android:gravity="top"
           android:textColor="@color/white"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
 
           />
 
@@ -117,7 +117,7 @@
           android:textColorHint="#696969"
 
           android:textColor="@color/white"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
           android:textSize="20dp"
           />
 
@@ -130,7 +130,7 @@
           android:inputType="number"
           android:textColorHint="#696969"
           android:textColor="@color/white"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
           android:drawableStart="@drawable/ic_baseline_123_24"
           android:drawableTint="@color/white"/>
       <Spinner
@@ -139,10 +139,11 @@
           android:drawableStart="@drawable/ic_baseline_live_tv_24"
           android:layout_width="200dp"
 
+
           android:textColor="@color/white"
           android:textColorHint="#696969"
           android:hint="   Genre"
-          android:layout_marginHorizontal="140dp"/>
+          android:layout_marginHorizontal="100dp"/>
 
       <EditText
           android:layout_width="200dp"
@@ -153,7 +154,7 @@
           android:inputType="numberDecimal"
           android:textColorHint="#696969"
           android:textColor="@color/white"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
           android:drawableStart="@drawable/ic_baseline_star_rate_24"
           android:drawableTint="@color/white"/>
 
@@ -161,7 +162,7 @@
           android:layout_width="wrap_content"
           android:layout_height="20dp"/>
       <Button
-          android:layout_width="300dp"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:id="@+id/btnAddAnime"
           android:background="@drawable/outline_button"
@@ -184,7 +185,7 @@
           android:id="@+id/btnUpdateAnimeHelp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="360dp"
+          android:layout_marginLeft="320dp"
           android:background="?android:attr/selectableItemBackground"
           android:drawableStart="@drawable/ic_help"
           android:textColor="@color/white"
@@ -198,7 +199,7 @@
           android:textColor="@color/white"
           android:textColorHint="#696969"
           android:hint="   Anime Name"
-          android:layout_marginHorizontal="140dp"/>
+          android:layout_marginHorizontal="100dp"/>
 
       <EditText
           android:id="@+id/edtUpdateAnimeDescription"
@@ -206,13 +207,14 @@
           android:layout_height="wrap_content"
           android:text=""
           android:hint=" AnimeDescription"
+          android:padding="10dp"
           android:background="@drawable/text_area_outline"
           android:inputType="textMultiLine"
           android:lines="6"
           android:textColorHint="#696969"
           android:textColor="@color/white"
           android:gravity="top"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
           />
 
       <CheckBox
@@ -224,7 +226,7 @@
           android:textColorHint="#696969"
           android:textSize="20dp"
           android:textColor="@color/white"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
           android:theme="@style/colored_checkBox"/>
 
       <EditText
@@ -236,7 +238,7 @@
           android:inputType="number"
           android:textColorHint="#696969"
           android:textColor="@color/white"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
           android:drawableStart="@drawable/ic_baseline_123_24"
           android:drawableTint="@color/white"/>
       <Spinner
@@ -249,7 +251,7 @@
           android:textColor="@color/white"
           android:textColorHint="#696969"
           android:hint="   Genre"
-          android:layout_marginHorizontal="140dp"/>
+          android:layout_marginHorizontal="100dp"/>
 
 
       <EditText
@@ -261,7 +263,7 @@
           android:textColorHint="#696969"
           android:inputType="numberDecimal"
           android:textColor="@color/white"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
           android:drawableStart="@drawable/ic_baseline_star_rate_24"
           android:drawableTint="@color/white"/>
       <Space
@@ -269,7 +271,7 @@
           android:layout_height="20dp"/>
       <Button
           android:id="@+id/btnUpdateAnime"
-          android:layout_width="300dp"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:background="@drawable/outline_button"
           android:text="Update Anime"
@@ -289,7 +291,7 @@
           android:id="@+id/btnDeleteAnimeHelp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="360dp"
+          android:layout_marginLeft="320dp"
           android:background="?android:attr/selectableItemBackground"
           android:drawableStart="@drawable/ic_help"
           android:textColor="@color/white"
@@ -303,7 +305,7 @@
           android:hint="   Anime Name"
           android:textColor="@color/white"
           android:textColorHint="#696969"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
           android:drawableStart="@drawable/ic_baseline_live_tv_24"/>
 
       <CheckBox
@@ -316,7 +318,7 @@
           android:textColorHint="#696969"
           android:drawableTint="@color/white"
           android:textSize="20dp"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
           android:theme="@style/colored_checkBox"
           />
 
@@ -330,14 +332,14 @@
           android:id="@+id/edtDeleteAnimeRating"
           android:textColorHint="#696969"
           android:drawableTint="@color/white"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
           android:drawableStart="@drawable/ic_baseline_star_rate_24"/>
       <Space
           android:layout_width="wrap_content"
           android:layout_height="20dp"/>
 
       <Button
-          android:layout_width="300dp"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:id="@+id/btnDeleteAnime"
           android:background="@drawable/outline_button"
@@ -359,7 +361,7 @@
           android:id="@+id/btnSearchAnimeHelp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="360dp"
+          android:layout_marginLeft="320dp"
           android:background="?android:attr/selectableItemBackground"
           android:drawableStart="@drawable/ic_help"
           android:textColor="@color/white"
@@ -373,14 +375,14 @@
           android:textColor="@color/white"
           android:textColorHint="#696969"
           android:drawableTint="@color/white"
-          android:layout_marginHorizontal="140dp"
+          android:layout_marginHorizontal="100dp"
           android:drawableStart="@drawable/ic_baseline_live_tv_24"/>
       <Space
           android:layout_width="wrap_content"
           android:layout_height="20dp"/>
 
       <Button
-          android:layout_width="300dp"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:id="@+id/btnSearchAnime"
           android:background="@drawable/outline_button"
@@ -462,8 +464,9 @@
       <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:textAlignment="center"
           android:text="___________________________________________"
-          android:layout_marginHorizontal="55dp"
+
           android:textColor="@color/white"/>
       <Space
           android:layout_width="wrap_content"
@@ -472,14 +475,14 @@
           android:id="@+id/btnViewAllUsersHelp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="360dp"
+          android:layout_marginLeft="320dp"
           android:background="?android:attr/selectableItemBackground"
           android:drawableStart="@drawable/ic_help"
           android:textColor="@color/white"
           />
 
       <Button
-          android:layout_width="300dp"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:id="@+id/btnViewAllAnime"
           android:background="@drawable/outline_button"

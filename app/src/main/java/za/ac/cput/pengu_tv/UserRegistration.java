@@ -3,6 +3,8 @@ package za.ac.cput.pengu_tv;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -18,6 +20,7 @@ import za.ac.cput.pengu_tv.util.DBHelper;
 
 public class UserRegistration extends AppCompatActivity {
     DBHelper myDb;
+    SQLiteDatabase sqLiteDatabase;
     private EditText username, Password, Email, Firstnames, Lastname;
 
 
@@ -61,6 +64,11 @@ public class UserRegistration extends AppCompatActivity {
     }
     public void checkRegister()
     {
+        Cursor emailCheck, usernameCheck;
+        myDb = new DBHelper(getApplicationContext());
+        sqLiteDatabase = myDb.getReadableDatabase();
+        emailCheck = myDb.checkUserEmail(Email.getText().toString(), sqLiteDatabase);
+        usernameCheck = myDb.checkUserUsername(username.getText().toString(), sqLiteDatabase);
         if(username.getText().toString().isEmpty()|| Password.getText().toString().isEmpty() || 
                 Email.getText().toString().isEmpty() || 
                 Firstnames.getText().toString().isEmpty() ||
@@ -68,7 +76,11 @@ public class UserRegistration extends AppCompatActivity {
             Toast.makeText(this, "Registration Failed, Fields Empty", Toast.LENGTH_LONG).show();
 
         }
-        else
+        else if (emailCheck.moveToFirst() || usernameCheck.moveToFirst()){
+            Toast.makeText(this, "There is already an account with that username or email!", Toast.LENGTH_SHORT).show();
+            username.getText().clear();
+            Email.getText().clear();
+        }else
         {
             boolean isInserted = myDb.insertUser(Firstnames.getText().toString(),
                                                 Lastname.getText().toString(),

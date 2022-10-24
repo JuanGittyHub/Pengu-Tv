@@ -34,8 +34,8 @@ public class AboutPage extends AppCompatActivity{
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.black)));
         setContentView(R.layout.activity_about_page);
 
-        getUsername= getIntent().getStringExtra("extendUser");
-        Toast.makeText(this, "Welcome, "+getUsername+"!", Toast.LENGTH_SHORT).show();
+
+
         builder = new AlertDialog.Builder(this);
 
 
@@ -78,10 +78,14 @@ public class AboutPage extends AppCompatActivity{
                 });
                 builder.show();
                 return true;
+            case R.id.icRequest:
+                Toast.makeText(this, "Please make a request on the main page!", Toast.LENGTH_SHORT).show();
+                return true;
+
             case R.id.icMain:
                 Toast.makeText(this, "Welcome to the anime page!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(AboutPage.this,MainPage.class);
-                intent.putExtra("loginUser",getUsername);
+
                 startActivity(intent);
                 return true;
             case R.id.icAbout:

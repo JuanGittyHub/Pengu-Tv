@@ -1,8 +1,13 @@
 package za.ac.cput.pengu_tv;
 
+import static za.ac.cput.pengu_tv.util.DBHelper.REVIEWS_TABLE_NAME;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,11 +16,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.application.R;
 
-public class HomePage extends AppCompatActivity {
+import za.ac.cput.pengu_tv.util.DBHelper;
 
+public class HomePage extends AppCompatActivity {
+DBHelper db;
+SQLiteDatabase sqLiteDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +32,8 @@ public class HomePage extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home_page);
+        db=new DBHelper(this);
+
 
         Button btnLogin=findViewById(R.id.btnLoginPage);
         Button btnRegister=findViewById(R.id.btnRegisterPage);
@@ -55,5 +66,7 @@ public class HomePage extends AppCompatActivity {
             }
         });
     }
+
+
 
 }

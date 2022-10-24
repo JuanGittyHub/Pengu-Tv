@@ -14,12 +14,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         app:showAsAction="always"
         android:enabled="false"
         />
-    <item
 
-        android:title = ""
-        app:showAsAction="always"
-        android:enabled="false"
-        />
 
     <item
 
@@ -27,17 +22,18 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         app:showAsAction="always"
         android:enabled="false"
         />
-    <item
 
-        android:title = ""
-        app:showAsAction="always"
-        android:enabled="false"
-        />
     <item
         android:id = "@+id/icMain"
         android:title = "Main"
         app:showAsAction="always"
         android:icon="@drawable/logo"
+        />
+    <item
+
+        android:title = ""
+        app:showAsAction="always"
+        android:enabled="false"
         />
     <item
         android:id="@+id/icRequest"
@@ -54,7 +50,12 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         app:showAsAction="always"
         android:icon="@drawable/ic_help"
         />
+    <item
 
+        android:title = ""
+        app:showAsAction="always"
+        android:enabled="false"
+        />
 
 
 </menu>

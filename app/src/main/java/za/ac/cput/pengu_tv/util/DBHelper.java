@@ -1,11 +1,18 @@
 package za.ac.cput.pengu_tv.util;
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import za.ac.cput.pengu_tv.AnimeDataEntity;
 
 public class DBHelper extends SQLiteOpenHelper{
     public static String getId;
@@ -178,9 +185,18 @@ public class DBHelper extends SQLiteOpenHelper{
 
     public Cursor searchUser(String username, SQLiteDatabase sqLiteDatabase){
         String[] projections={COLUMN_1,COLUMN_2,COLUMN_3,COLUMN_4,COLUMN_5,COLUMN_6,COLUMN_7};
-        String selection= COLUMN_5+" LIKE ? ";
+        String selection= COLUMN_5+" LIKE ?";
         String[] selection_args={username};
         Cursor res= sqLiteDatabase.query(USER_TABLE_NAME,projections,selection,selection_args,null,null,null);
+        return res;
+    }
+
+
+    public Cursor searchUserAndPassword(String username, String password){
+        SQLiteDatabase sqLiteDatabase= this.getWritableDatabase();
+
+        Cursor res;
+        res= sqLiteDatabase.rawQuery("select * from "+USER_TABLE_NAME+" where USERUSERNAME = ? and USERPASSWORD = ?",new String[]{username,password});
         return res;
     }
     public Cursor viewAllUsers(){
@@ -190,6 +206,7 @@ public class DBHelper extends SQLiteOpenHelper{
         return res;
 
     }
+
     public Cursor viewAllUsernames(){
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor res;
@@ -260,12 +277,32 @@ public class DBHelper extends SQLiteOpenHelper{
 
         return true;
     }
+    public boolean updateAnimeRatingById(int animeId, double ratingAverage){
+        SQLiteDatabase db= this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put(ANIMECOLUMN_1,animeId);
+
+        contentValues.put(ANIMECOLUMN_10,ratingAverage);
+
+        db.update(ANIME_TABLE_NAME,contentValues,"ANIMEID = ?",(new String[]{String.valueOf(animeId)}));
+
+        return true;
+    }
     public Cursor viewAllAnime(){
         SQLiteDatabase sqLiteDatabase= this.getWritableDatabase();
         Cursor res;
         res= sqLiteDatabase.rawQuery("select * from "+ANIME_TABLE_NAME,null);
         return res;
     }
+    public Cursor viewAllAnimeBySearch(String input){
+        SQLiteDatabase sqLiteDatabase= this.getWritableDatabase();
+        System.out.println(input+ "Test 3");
+        Cursor res;
+        res= sqLiteDatabase.rawQuery("select * from "+ANIME_TABLE_NAME +" where ANIMETITLE = ?",new String[]{input});
+        System.out.println(res+ "Test 4");
+        return res;
+    }
+
     public Integer deleteAnime(String animeName,String ongoing, double animeRating){
         SQLiteDatabase db= this.getWritableDatabase();
         return db.delete(ANIME_TABLE_NAME,"ANIMETITLE = ? AND ANIMEONGOING = ? AND RATINGAVERAGE = ?",new String[]{animeName,ongoing,String.valueOf(animeRating)});
@@ -279,7 +316,18 @@ public class DBHelper extends SQLiteOpenHelper{
         Cursor res= db.query(ANIME_TABLE_NAME,projections,selection,selectionArgs,null,null,null);
         return res;
 
+
     }
+    public Cursor searchAnimeForList(String animeName,SQLiteDatabase db){
+        String[] projections= {ANIMECOLUMN_1,ANIMECOLUMN_4,ANIMECOLUMN_5,ANIMECOLUMN_6,ANIMECOLUMN_7,ANIMECOLUMN_8,ANIMECOLUMN_9,ANIMECOLUMN_10};
+        String selection= ANIMECOLUMN_4+" LIKE ?";
+        String[] selectionArgs={animeName};
+        Cursor res= db.query(ANIME_TABLE_NAME,projections,selection,selectionArgs,null,null,null);
+        return res;
+
+
+    }
+
 
     //FOR REVIEW
     //-------Insert Section--------//
@@ -299,6 +347,7 @@ public class DBHelper extends SQLiteOpenHelper{
 
             return true;
     }
+
     public Cursor checkAnimeReview(String animeName,SQLiteDatabase db){
         String[] projections={ANIMECOLUMN_1,ANIMECOLUMN_4,ANIMECOLUMN_10};
         String selection= ANIMECOLUMN_4+ " LIKE ?" ;
@@ -424,5 +473,57 @@ public Cursor viewAllRequests(){
         String[] selection_args = {String.valueOf(reviewId)};
         Cursor res = sqLiteDatabase.query(REVIEWS_TABLE_NAME, projections, selection, selection_args, null, null, null);
         return res;
+    }
+    public List<AnimeDataEntity> search(String keyWord){
+        List<AnimeDataEntity> animeDataEntities= null;
+        try{
+            SQLiteDatabase sqLiteDatabase= getReadableDatabase();
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from "+ ANIME_TABLE_NAME+ " where "+ANIMECOLUMN_4+" like ?", new String[] {"%" + keyWord + "%"});
+        if (cursor.moveToFirst()){
+            animeDataEntities= new ArrayList<AnimeDataEntity>();
+            do{
+                AnimeDataEntity animeDataEntity = new AnimeDataEntity();
+                animeDataEntity.setTitle(cursor.getString(1));
+                animeDataEntity.setDescription(cursor.getString(2));
+                animeDataEntity.setTotal(cursor.getString(3));
+                animeDataEntity.setOngoing(cursor.getString(4));
+                animeDataEntity.setEpisodeAmount(cursor.getLong(5));
+                animeDataEntity.setGenre(cursor.getString(6));
+                animeDataEntity.setAverage(cursor.getDouble(7));
+
+            }while(cursor.moveToNext());
+        }
+        } catch(Exception e){
+            animeDataEntities = null;
+        }
+        return animeDataEntities;
+    }
+   /* public void averageRating(String average){
+       SQLiteDatabase db= this.getWritableDatabase();
+Cursor rating;
+      rating=  db.rawQuery("select AVG(RATING)" + " from "+ REVIEWS_TABLE_NAME+" where "+ REVIEWCOLUMN_3 +" = ?", new String[]{average});
+        return rating;
+    }
+
+    */
+
+   /* SELECT AVG(rating)
+    FROM review_table
+    WHERE animeId=?;
+
+    */
+
+    public Double getRatings(){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Double total= 0.0;
+        Double count=0.0;
+        Cursor c = db.rawQuery("SELECT RATING from "+ REVIEWS_TABLE_NAME+" where ANIMEID = 2", null);
+        while(c.moveToNext()){
+            @SuppressLint("Range") Double average= c.getDouble(c.getColumnIndex("RATING"));
+            total+=(average);
+            count++;
+        }
+        return total/count;
     }
 }

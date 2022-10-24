@@ -7,22 +7,26 @@
     tools:context="za.ac.cput.pengu_tv.MainPage"
     android:background="@drawable/premium_dark">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/search_view_bg"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBaseline_toTopOf="@id/recyclerViewMain"
 
-        app:iconifiedByDefault="false"
-        app:queryHint="Search Anime Here...">
 
-    </androidx.appcompat.widget.SearchView>
+<EditText
+    android:id="@+id/edtSearch"
+    android:padding="10dp"
+    android:drawableStart="@drawable/ic_baseline_search_24"
+    android:layout_width="0dp"
+    android:layout_height="40dp"
+    android:layout_margin="8dp"
+
+    android:background="@drawable/search_view_bg"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:textColorHint="@color/white"
+    app:layout_constraintBaseline_toTopOf="@id/recyclerViewMain"
+    android:hint="Search Here..."
+    />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMain"

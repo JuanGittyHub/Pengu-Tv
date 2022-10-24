@@ -3,6 +3,7 @@ package za.ac.cput.pengu_tv;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ public class ExampleDialog extends AppCompatDialogFragment {
     private EditText edtTitle, edtDescription, edtRating;
     private ExampleDialogListener listener;
     DBHelper db;
+    SQLiteDatabase sqLiteDatabase;
     Spinner spGenre;
     String genre;
     @Override
@@ -39,12 +41,10 @@ public class ExampleDialog extends AppCompatDialogFragment {
 
         spGenre= view.findViewById(R.id.animeGenre);
         ArrayAdapter adapter = new ArrayAdapter(view.getContext(),R.layout.my_selected_item,genres);
-
         spGenre.setAdapter(adapter);
         adapter.setDropDownViewResource(R.layout.my_dropdown_item);
 
         spGenre.setAdapter(adapter);
-
         builder.setView(view).setTitle("Submit Request")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
@@ -59,8 +59,9 @@ public class ExampleDialog extends AppCompatDialogFragment {
                         genre=spGenre.getSelectedItem().toString();
                         String animeTitle= edtTitle.getText().toString();
                         String animeDescription= edtDescription.getText().toString();
+                        edtDescription.onSaveInstanceState();
                         String animeRating= edtRating.getText().toString();
-                        if (genre.equals("   Select Genre")|| animeTitle.isEmpty()||animeDescription.isEmpty()||animeRating.isEmpty()){
+                        if (genre.equals("   Select Genre")|| animeTitle.isEmpty() && !animeDescription.isEmpty()|| animeDescription.isEmpty() ||animeRating.isEmpty()){
                             Toast.makeText(view.getContext(), "There are empty fields!", Toast.LENGTH_SHORT).show();
                         }else {
                             listener.applyTexts(animeTitle, animeDescription, genre, Double.valueOf(animeRating));

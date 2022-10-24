@@ -1,8 +1,12 @@
 package za.ac.cput.pengu_tv;
 
+import static za.ac.cput.pengu_tv.util.DBHelper.REVIEWS_TABLE_NAME;
+
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,6 +31,8 @@ import java.util.ArrayList;
 import za.ac.cput.pengu_tv.util.DBHelper;
 
 public class AdministratorRequests extends AppCompatActivity {
+    String id;
+    SQLiteDatabase sqLiteDatabase;
     AlertDialog.Builder builder;
     AlertDialog.Builder builderHelp;
     DBHelper db;
@@ -58,7 +64,7 @@ public class AdministratorRequests extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         displayData();
-
+getAll();
 
         ImageView myImageView3= findViewById(R.id.requestsIcon);
         myImageView3.setImageResource(R.drawable.ic_baseline_emoji_people_24);
@@ -152,5 +158,35 @@ public class AdministratorRequests extends AppCompatActivity {
                 username.add(cursor.getString(7));
             }
         }
+    }
+    public void getAll(){
+        Cursor res;
+        res= db.viewAllAnime();
+
+        while (res.moveToNext()){
+            id= res.getString(0);
+            getRatings();
+        }
+    }
+
+    public Double getRatings() {
+        db= new DBHelper(getApplicationContext());
+        sqLiteDatabase = db.getReadableDatabase();
+        String animeId = id;
+        Double total = 0.0;
+        Double count = 0.0;
+        Cursor c = sqLiteDatabase.rawQuery("SELECT RATING from " + REVIEWS_TABLE_NAME + " where ANIMEID = ?", new String[]{animeId});
+        while (c.moveToNext()) {
+            @SuppressLint("Range") Double average = c.getDouble(c.getColumnIndex("RATING"));
+            total += (average);
+            count++;
+        }
+        //Toast.makeText(context, animeId, Toast.LENGTH_SHORT).show();
+        String convert= String.format("%.1f",(total / count));
+        Boolean isUpdated= db.updateAnimeRatingById(Integer.valueOf(animeId),Double.valueOf(convert));
+
+
+
+        return total / count;
     }
 }

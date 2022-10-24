@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +51,9 @@ SQLiteDatabase sqLiteDatabase;
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(),android.R.anim.slide_in_left);
+
         builder = new AlertDialog.Builder(context);
     holder.animeTitle_id.setText(String.valueOf(animeTitle_id.get(position)));
     holder.animeDescription_id.setText(String.valueOf(animeDescription_id.get(position)));
@@ -57,7 +62,7 @@ SQLiteDatabase sqLiteDatabase;
     holder.animeGenre_id.setText(String.valueOf(animeGenre_id.get(position)));
     holder.animeRating_id.setText(String.valueOf(animeRating_id.get(position)));
     holder.username_id.setText(String.valueOf(username_id.get(position)));
-
+        holder.itemView.startAnimation(animation);
 
 holder.itemView.setOnClickListener(new View.OnClickListener() {
 

@@ -72,35 +72,23 @@ public class UserLogin extends AppCompatActivity {
 
 
     }
-       @SuppressLint("Range")
+       //@SuppressLint("Range")
         public void LoginFunction(){
-            if(emptyTextEmptyHolder)
-            {
-                username=edtUsername.getText().toString();
-                myDb = new DBHelper(getApplicationContext());
-                sqLiteDatabase = myDb.getWritableDatabase();
-                Cursor cursor = sqLiteDatabase.query(DBHelper.USER_TABLE_NAME,null," "+DBHelper.COLUMN_5+"=?",new String[]{username},null,null,null);
+            password = edtPassword.getText().toString();
+            username = edtUsername.getText().toString();
 
-                while(cursor.moveToNext()) {
-                    if (cursor.isFirst()) {
-                        cursor.moveToFirst();
-                        tempPassword = cursor.getString(cursor.getColumnIndex(DBHelper.COLUMN_6));
-                        temp_name= cursor.getString(1);
-                        cursor.close();
-                    }
-                }
+            myDb = new DBHelper(getApplicationContext());
+            sqLiteDatabase = myDb.getWritableDatabase();
+            Cursor checkUserPass= myDb.searchUserAndPassword(username,password);
+            if (checkUserPass.moveToNext()){
+                Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
                 CheckFinalResult();
             }
-            else
-            {
-                Toast.makeText(UserLogin.this, "Login Failed", Toast.LENGTH_SHORT).show();
+            else {
+                Toast.makeText(this, "The username or password is incorrect!", Toast.LENGTH_SHORT).show();
             }
         }
-        public void CheckFinalResult()
-    {
-        if(tempPassword.equalsIgnoreCase(password))
-        {
-            Toast.makeText(UserLogin.this, "Login Successful", Toast.LENGTH_SHORT).show();
+        public void CheckFinalResult(){
 
             Intent intent = new Intent(UserLogin.this, MainPage.class);
 
@@ -113,18 +101,12 @@ public class UserLogin extends AppCompatActivity {
                 Toast.makeText(this, "Not Added", Toast.LENGTH_SHORT).show();
             }
             Toast.makeText(UserLogin.this, "Welcome, "+username+"!", Toast.LENGTH_SHORT).show();
+
             startActivity(intent);
 
 
         }
-        else if (!tempPassword.equalsIgnoreCase(password))
-        {
-            Toast.makeText(UserLogin.this, "Username or Password is incorrect", Toast.LENGTH_SHORT).show();
 
-        }
-
-        tempPassword = "NOT_FOUND";
-    }
 
         public  void CheckEditTextStatus()
     {

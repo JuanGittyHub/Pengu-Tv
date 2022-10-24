@@ -10,9 +10,10 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="350dp"
+        android:padding="10dp"
         android:layout_height="wrap_content"
         android:background="@drawable/text_area_outline"
-        android:text="Welcome to PenguTv where you can find all your favourite anime and new anime if you have run out of things to watch. You can also review anime you have seen and view reviews made by other users. So signup and join our community of anime lovers today"
+        android:text="Welcome to PenguTv where you can find all your favourite anime and new anime if you have run out of things to watch. You can also review anime you have seen and view reviews made by other users. So signup and join our community of anime lovers today!"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
